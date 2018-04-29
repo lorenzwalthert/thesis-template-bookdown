@@ -14,13 +14,13 @@ output:
     toc_depth: 3
     toc_unnumbered: no
     toc_appendix: yes
+    toc_bib: yes
     quote_footer: ["\\begin{flushright}", "\\end{flushright}"]
   bookdown::gitbook: default
 bibliography: [bib/bib.bib]
 biblio-style: apalike
 link-citations: yes
 colorlinks: no  
-# toc: no
 lot: no
 lof: no
 site: bookdown::bookdown_site
