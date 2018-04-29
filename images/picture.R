@@ -1,5 +1,5 @@
 ## example to generate an .eps file with the function ps.latex()
-## Author: Sarah Gerster and Martin Mächler
+## Author: Sarah Gerster and Martin Maechler
 ## Last revision: 16 Aug 2011
 
 require("sfsmisc") # pdf.latex(), pdf.end(), etc
