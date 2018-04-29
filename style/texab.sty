@@ -1,0 +1,644 @@
+%%% --- $Id: texab.sty,v 1.75 2011/02/11 10:18:52 sfs Exp $
+%%% ---      =========                                    ======= <locked by>
+%%% ---                                            ==============
+%%% --- Dieses File enthaelt die Abkuerzungen  --- NUR fuer LaTeX --
+%%% ---                                            ==============
+%%%
+\typeout{Sem.f.Statistik LaTeX Abkuerzungen
+  $Id: texab.sty,v 1.75 2011/02/11 10:18:52 sfs Exp $}
+\providecommand{\sfs}{Seminar f\"ur Statistik}
+
+\newif\ifanglestyle           \anglestylefalse
+\newif\ifbracestyle           \bracestylefalse
+\newif\ifbracketstyle         \bracketstylefalse
+\newif\ifparenthesisstyle     \parenthesisstylefalse
+\newif\ifcalligraphicstyle    \calligraphicstylefalse
+\newif\ifnoncalligraphicstyle \noncalligraphicstylefalse
+\newif\ifstahelstyle          \stahelstylefalse
+
+\DeclareOption{anglestyle}           {\anglestyletrue}
+\DeclareOption{bracestyle}           {\bracestyletrue}
+\DeclareOption{bracketstyle}         {\bracketstyletrue}
+\DeclareOption{parenthesisstyle}     {\parenthesisstyletrue}
+\DeclareOption{calligraphicstyle}    {\calligraphicstyletrue}
+\DeclareOption{noncalligraphicstyle} {\noncalligraphicstyletrue}
+\DeclareOption{stahelstyle}          {\anglestyletrue\calligraphicstyletrue
+                                      \stahelstyletrue}
+\ProcessOptions
+
+\RequirePackage{amsbsy}% for \boldsymbol
+\RequirePackage{amssymb}% for \intercal
+\RequirePackage{amsopn}% DeclareMathOperator
+\RequirePackage{amsfonts}
+
+\RequirePackage{relsize}%-> \smaller, \larger, \mathsmaller,.....
+\RequirePackage{exscale}%-> \bigl also works for 11pt, 12pt
+
+\RequirePackage{ifthen}%\if etc
+
+%Should also use this: \input smallcaptions.sty
+
+
+%%%----------- This was texab0.sty --- NO LONGER! (1999, Sept. 2) ----
+\newcommand{\al}{\glqq} % Anfuehrungszeichen links
+\newcommand{\ar}{\grqq} % Anfuehrungszeichen rechts
+%% --- spacing
+\newcommand{\tsp}{\hskip 5pt}
+\newcommand{\nheight}{\llap{\phantom{Xg}}}
+
+% - \rm-Woerter (u.Ae.) in math mode
+\DeclareMathOperator{\logit}{logit}
+\DeclareMathOperator{\med}{med}
+\DeclareMathOperator{\median}{median}
+\DeclareMathOperator{\Med}{Med}
+\DeclareMathOperator{\Erw}{\mathbf{E}}%-- see also \E (below)
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\Cor}{Corr}
+\DeclareMathOperator{\cor}{corr}
+\DeclareMathOperator{\se}{se}
+\DeclareMathOperator{\sd}{sd}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\diag}{diag}
+%% Nachteil von diesen (wegen \limits !?): \argmax_\beta setzt \beta
+%% *unterhalb*, auch inline, was  \max_\beta nicht tut
+%% \newcommand{\argmin}{\mathop{\arg \min}\limits}
+%% \newcommand{\argmax}{\mathop{\arg \max}\limits}
+%% \newcommand{\ave}{\mathop{ave}\limits}
+%% This is following http://en.wikipedia.org/wiki/Arg_max 's recommendation:
+\DeclareMathOperator*{\ave}{ave}
+\DeclareMathOperator*{\argmin}{arg\, min}
+\DeclareMathOperator*{\argmax}{arg\, max}
+%
+\DeclareMathOperator{\IF}{IF}
+\DeclareMathOperator{\und}{ und }
+\DeclareMathOperator{\oder}{ oder }
+%\def\mit{\mathrm{ mit }}  %-- causes some problems with \mbox or \boldmath !!!
+\DeclareMathOperator{\for}{ for }
+\DeclareMathOperator{\where}{ where }
+\DeclareMathOperator{\with}{ with }
+%%-------  NB.  << NEVER >> REdefine  \or !!! ----
+%% Not ``\and'': this is used in \author
+
+% - Math. Operatoren
+\newcommand{\op}[1]{\mathop{#1}}%was\newcommand{\op}[1]{\kern-.2em #1\kern-.2em}
+% \newcommand{\oneover}[1]{{1\over#1}\,\,}
+\newcommand{\oneover}[1]{{\textstyle 1\over#1}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\sups}[1]{^{(#1)}}
+%%-- shorter, for convergence ...==== unnecessary ===
+%%-- There is already \to  (in standard TeX & LaTeX !) :
+\newcommand{\go}{\rightarrow%
+        \typeout{use standard \TeX \verb|\to| instead of \verb|\go|}}
+%% convergence in Probability, Distribution: \tendsto{P}, \tendsto{D} :
+\newcommand{\tendsto}[1]{\buildrel {#1} \over \longrightarrow}
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}[1]{\if \sigma{#1}\widehat{\sigma}\else
+{}\kern0.1em\widehat{\kern-0.1em#1}{}\fi}
+\newcommand{\wb}[1]{{}\if Y#1\overline{Y}\else
+\kern0.2em\overline{\kern-0.2em#1}\fi}
+\newcommand{\Ssum}{\sum\nolimits}
+\newcommand{\Sn}{\Ssum_{i=1}^n}
+\newcommand{\Seq}[4]{#1_{#2},\,#1_{#3},\ldots,#1_{#4}}% siehe auch \Nl , \No (unten)
+\newcommand{\Half}{{\textstyle 1\over2}}% siehe auch \half (unten)
+\newcommand{\ul}[1]{\textbf{#1}}
+
+\newcommand{\Hmu}{\widehat{\mu}}
+\newcommand{\Halpha}{\widehat{\alpha}}
+\newcommand{\Hbeta}{\widehat{\beta}}
+%
+\newcommand{\iid}{\mbox{ i.i.d. }}
+\newcommand{\fs}{\mbox{f.s.}}
+\newcommand{\Loglik}{\ell\kern-1pt\ell}
+
+%%%------------ script und andere Spezialschriften ----------------------
+
+
+%-- Mengen Symbole ------------- mathbb needs package{amsfonts}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+%--------- Verteilungs Symbole
+\DeclareMathOperator{\N}{\mathcal{N}}% Normalverteilung
+\renewcommand{\P}{\mathcal{P}}%--- RE-defining the standard \P (Paragraph)!!--
+%%%
+\DeclareMathOperator{\M}{\mathcal{M}}% Multinom ?
+\DeclareMathOperator{\B}{\mathcal{B}}% Binom
+\DeclareMathOperator{\C}{\mathcal{C}}% ??
+\DeclareMathOperator{\Bern}{\mathcal{B}ernoulli}
+\DeclareMathOperator{\E}{\mathcal{E}}%-- see also \Erw (above)
+\DeclareMathOperator{\F}{\mathcal{F}}
+\DeclareMathOperator{\Wish}{\mathcal{W}}
+\newcommand{\phibf}{\boldsymbol{\phi}}%{\phi\hskip-5.4pt\phi} % bold \phi
+%% \endproof is standard.. rather use that!
+\newcommand{\Endproof}{\hfill \hbox{\rlap{$\sqcup$}$\sqcap$} \hfill\break}
+\newcommand{\Endpr}{$\heartsuit{\sqcap}\kern-6pt\sqcup$}
+% - Abkuerzungen
+%%- \newcommand{\W}{Wahrscheinlichkeit}%--- OHNE 'german' style benützbar..
+%%- \hyphenation{Wahr-schein-lich-keit}
+\newcommand{\W}{Wahr\-schein\-lich\-keit}
+\newcommand{\Zv}{Zu\-falls\-va\-ria\-ble}
+\newcommand{\Zz}{Zufallszahl}
+\newcommand{\Zvk}{Zu\-falls\-vek\-tor}
+\newcommand{\Ewt}{Er\-war\-tungs\-wert}
+\newcommand{\Staw}{Stan\-dard\-ab\-wei\-chung}
+\newcommand{\Vt}{Verteilung}
+\newcommand{\Nv}{Nor\-mal\-ver\-tei\-lung}
+\newcommand{\nv}{nor\-mal\-ver\-teilt}
+\newcommand{\Snv}{Stan\-dard-Nor\-mal\-ver\-tei\-lung}
+\newcommand{\ML}{Maximum-Likelihood}
+\newcommand{\Iw}{Irr\-tums-Wahr\-schein\-lich\-keit}
+\newcommand{\Vi}{Ver\-trau\-ens\-in\-ter\-vall}
+\newcommand{\Va}{Vari\-anz\-ana\-lyse}
+
+\newcommand{\sog}[1]{so genannt#1}
+\newcommand{\zb}{z.\,B.\null}
+\newcommand{\vgl}[1]{vergleiche\if #1\ \else\ \fi#1}
+\newcommand{\bzw}[1]{beziehungsweise\if #1\ \else\ \fi#1}
+\newcommand{\siehe}[1]{siehe\if #1{ }\else\ \fi#1}
+\newcommand{\dash}{das heisst}
+% ---------------------------------------------------------------
+\newcommand{\Hneed}[1]{\penalty-8000\hskip#1 plus10pt\penalty-8000\hskip-#1}
+\newcommand{\Vneed}[1]{\penalty-5000\vskip#1%\vskip 0pt plus20pt
+\penalty-5000\vspace{-#1}}
+\newcommand{\vneed}{\Vneed}
+\newcommand{\hneed}{\Hneed}
+\newcommand{\Goodbreak}{\Vneed{\Lvneed}}
+\newlength{\Lvneed}\Lvneed 10mm
+\newcommand{\Savespace}{\vskip -3mm plus 3mm}
+\newcommand{\Savesp}[1]{\vskip -#1mm plus #1mm}
+\newcommand{\Longpage}{\enlargethispage{\LLongpage}}
+\newlength{\LLongpage}\setlength{\LLongpage}{8mm}
+\newlength{\Lenlarge}\setlength{\Lenlarge}{8mm} % benuetzt das noch jemand?
+
+\newcommand{\Tit}[1]{\par\Vneed{\Lvneed}\vskip\baselineskip\noindent%
+  \textbf{\ignorespaces #1}\par\noindent\ignorespaces}
+\newcommand{\tit}{\Tit}
+\newcommand{\Kw}[1]{\par\vspace{1em}\noindent\llap{---\ \ }\textbf{#1}\\}
+\newcommand{\Kww}[1]{\par\vspace{0.5em}\noindent\llap{+\ \ }\textsl{#1}\\}
+\newcommand{\kw}{\Kw}
+\newcommand{\kww}{\Kww}
+\newcommand{\Quad}{\hspace*{1em}}
+\newcommand{\Item}[1]{\par\vspace{\Litemskip}
+  \noindent\hbox to \Litemwidth{#1}\hangindent\Litemwidth
+  \parskip\Lparskip\ignorespaces}
+\newcommand{\Itemone}[1]{\par\vspace{-\baselineskip}
+  \noindent\hbox to \Litemwidth{#1}\hangindent\Litemwidth\ignorespaces}
+\newcommand{\Itm}{\Item{\Bullet}\ignorespaces}
+\newcommand{\Itmone}{\Itemone{\Bullet}\ignorespaces}
+\newcommand{\Itmend}{\par\vskip\Litemskip}
+\newlength{\Litemskip}\Litemskip3pt
+\newlength{\Litemwidth}\Litemwidth10mm
+\newlength{\Lparskip}\Lparskip5pt
+\newcommand{\Bullet}{\leavevmode\hbox to 2ex{\mathsurround0pt$\bullet$\hfill}}
+\newcommand{\Arrow}{\ $\longrightarrow$\ }
+\newcommand{\Aster}{{\large * }}
+% \newcommand{\Aster}{$^\mbox{\textbf{*}}$}}
+\newcommand{\Cite}{\citeasnoun}
+
+\newcommand{\ETH}{ Swiss Federal Inst.\ of Technology (ETH)}
+%% NOTA BENE: \eth is part of the AMS-symbols package do NOT define it !!
+%%----- end of former texab0.sty ----------------------------------------------
+
+%Should also use this: \input smallcaptions.sty
+
+%%-- Argumenten-Klammern `a la Werner Stahel --
+\newcommand*{\la}{\langle}\newcommand{\ra}{\rangle}
+\newcommand*{\lla}{\left\langle}\newcommand{\rra}{\right\rangle}
+%\newcommand{\la}{(}\newcommand{\ra}{)}
+\newcommand{\fn}[1]{\kern-2pt\left(#1\right)}
+\newcommand{\fni}[1]{\kern-2pt\bigl(#1\bigr)}
+\newcommand{\fnii}[1]{\kern-2pt\Bigl(#1\Bigr)}
+\newcommand{\fnsmall}[1]{\!(#1)}
+%%- \newcommand{\fnbig}[1]{\left(#1\right)}
+\newcommand{\Ew}[1]{\E\kern2pt\fn{#1}}
+\newcommand{\Ewi}[1]{\E\kern2pt\fni{#1}}
+\newcommand{\Ewii}[1]{\E\kern2pt\fnii{#1}}
+\newcommand{\Vr}[1]{\var\kern2pt\fn{#1}}
+\newcommand{\Vri}[1]{\var\kern2pt\fni{#1}}
+\newcommand{\Vrii}[1]{\var\kern2pt\fnii{#1}}
+
+
+%%-- Erwartungswert & Varianz  ``a la W.St'' (fuer Ubungen, etc.)------------
+\newcommand{\notationwst}{%
+%%=== The following RE-defines basic TeX commands  \( and \)  --- BE CAREFUL!
+\gdef\({\langle}\gdef\){\rangle}%
+\renewcommand{\fn}[1]{\lla ##1\rra} % \kern-1pt
+\renewcommand{\fni}[1]{\bigl\langle ##1\bigr\rangle}
+\renewcommand{\fnii}[1]{\Bigl\langle ##1\Bigr\rangle}
+\renewcommand{\fnsmall}[1]{\!\la ##1\ra}
+%% \VAR and \VARi are also used in new scheme further down
+%%- \newcommand{\VAR}[1]{\Var  \left\la #1 \right\ra}
+%%- \newcommand{\VARi}[1]{\Var \bigl\la #1 \bigr\ra}
+%%- \newcommand{\Ewi}[1]{\E \bigl\la ##1 \bigr\ra}
+%%- \newcommand{\Ewii}[1]{\E\Bigl\la ##1 \Bigr\ra}
+%%- \newcommand{\VARii}[1]{\Var\Bigl\la ##1 \Bigr\ra}
+}%-----------------------------------------end{notationwst}-----------
+\newcommand{\notationnormal}{%
+%%=== The following RE-defines basic TeX commands  \( and \)  --- BE CAREFUL!
+\gdef\({(}\gdef\){)}%
+\renewcommand{\fn}[1]{\kern-2pt\left(##1\right)}
+\renewcommand{\fni}[1]{\kern-2pt\bigl(##1\bigr)}
+\renewcommand{\fnii}[1]{\kern-2pt\Bigl(##1\Bigr)}
+\renewcommand{\fnsmall}[1]{( ##1)}
+}
+
+%%-- Erwartungswert & Varianz etc. vereinheitlicht... (ph, 23.10.00)
+
+\newcommand{\@ekl}{[}     % Erwartungswert Klammer links
+\newcommand{\@ekr}{]}     % Erwartungswert Klammer rechts
+\newcommand{\@ckl}{(}     % (Co)variance Klammer links
+\newcommand{\@ckr}{)}
+\newcommand{\@pkl}{[}     % Probability Klammer links
+\newcommand{\@pkr}{]}
+\newcommand{\@vkl}{(}     % Verteilungs Klammer links
+\newcommand{\@vkr}{)}
+
+\newcommand{\ERWSymbol}{\Erw}  % vorbereitet zum Anpassen an individuelle Styles
+\newcommand{\VARSymbol}{\Var}
+\newcommand{\COVSymbol}{\Cov}
+\newcommand{\CORSymbol}{\Cor}
+\DeclareMathOperator{\PRSymbol}{P}
+\DeclareMathOperator{\BinSymbol}{Bin}
+%%- \newcommand{\BinSymbol}{\B}
+\DeclareMathOperator{\ExpSymbol}{Exp}
+\DeclareMathOperator{\PoisSymbol}{Pois}
+%%- \newcommand{\PoisSymbol}{\P}
+\newcommand{\NormSymbol}{\N}
+
+\ifanglestyle
+  \renewcommand{\@ekl}{\langle}
+  \renewcommand{\@ekr}{\rangle}
+  \renewcommand{\@ckl}{\langle}
+  \renewcommand{\@ckr}{\rangle}
+  \renewcommand{\@pkl}{\langle}
+  \renewcommand{\@pkr}{\rangle}
+\fi
+\ifbracestyle
+  \renewcommand{\@ekl}{\{}
+  \renewcommand{\@ekr}{\}}
+  \renewcommand{\@ckl}{\{}
+  \renewcommand{\@ckr}{\}}
+  \renewcommand{\@pkl}{\{}
+  \renewcommand{\@pkr}{\}}
+\fi
+\ifbracketstyle
+  \renewcommand{\@ckl}{[}
+  \renewcommand{\@ckr}{]}
+\fi
+\ifparenthesisstyle
+  \renewcommand{\@ekl}{(}
+  \renewcommand{\@ekr}{)}
+  \renewcommand{\@pkl}{(}
+  \renewcommand{\@pkr}{)}
+\fi
+\ifcalligraphicstyle
+  \renewcommand{\BinSymbol}{\B}
+  \renewcommand{\PoisSymbol}{\P}
+\fi
+\ifnoncalligraphicstyle \renewcommand{\NormSymbol}{N} \fi
+\ifstahelstyle
+  \renewcommand{\ERWSymbol}{\E}
+  \renewcommand{\VARSymbol}{\var}
+  \renewcommand{\COVSymbol}{\cov}
+  \renewcommand{\CORSymbol}{\cor}
+  \renewcommand{\PRSymbol}{P}
+\fi
+
+% Naechste Zeile (\makeright): if #1 == \left then \right #2 else #1 #2
+\newcommand{\makeright}[2]{\ifx#1\left\right#2\else#1#2\fi}
+% die eigentlichen ``Funktionen''
+\newcommand{\ERW}[2][\left] {\ERWSymbol    #1\@ekl #2 \makeright{#1}{\@ekr}}
+\newcommand{\PR}[2][\left]  {\PRSymbol     #1\@pkl #2 \makeright{#1}{\@pkr}}
+\newcommand{\VAR}[2][\left] {\VARSymbol    #1\@ckl #2 \makeright{#1}{\@ckr}}
+\newcommand{\VARH}[2][\left]{\wh\VARSymbol #1\@ckl #2 \makeright{#1}{\@ckr}}
+\newcommand{\COV}[2][\left] {\COVSymbol    #1\@ckl #2 \makeright{#1}{\@ckr}}
+\newcommand{\COVH}[2][\left]{\wh\COVSymbol #1\@ckl #2 \makeright{#1}{\@ckr}}
+\newcommand{\COR}[2][\left] {\CORSymbol    #1\@ckl #2 \makeright{#1}{\@ckr}}
+\newcommand{\CORH}[2][\left]{\wh\CORSymbol #1\@ckl #2 \makeright{#1}{\@ckr}}
+\newcommand{\Bin}[2][\left] {\BinSymbol    #1\@vkl #2 \makeright{#1}{\@vkr}}
+\newcommand{\Exp}[2][\left] {\ExpSymbol    #1\@vkl #2 \makeright{#1}{\@vkr}}
+\newcommand{\Norm}[2][\left]{\NormSymbol   #1\@vkl #2 \makeright{#1}{\@vkr}}
+\newcommand{\Pois}[2][\left]{\PoisSymbol   #1\@vkl #2 \makeright{#1}{\@vkr}}
+
+\newcommand{\ERWi}[3][\left] {\Xsub{\ERWSymbol}{#2}    #1\@ekl #3
+    \makeright{#1}{\@ekr}}
+\newcommand{\PRi}[3][\left]  {\Xsub{\PRSymbol}{#2}     #1\@pkl #3
+    \makeright{#1}{\@pkr}}
+\newcommand{\VARi}[3][\left] {\Xsub{\VARSymbol}{#2}    #1\@ckl #3
+    \makeright{#1}{\@ckr}}
+\newcommand{\VARHi}[3][\left]{\Xsub{\wh\VARSymbol}{#2} #1\@ckl #3
+    \makeright{#1}{\@ckr}}
+\newcommand{\COVi}[3][\left] {\Xsub{\COVSymbol}{#2}    #1\@ckl #3
+    \makeright{#1}{\@ckr}}
+\newcommand{\COVHi}[3][\left]{\Xsub{\wh\COVSymbol}{#2} #1\@ckl #3
+    \makeright{#1}{\@ckr}}
+\newcommand{\CORi}[3][\left] {\Xsub{\CORSymbol}{#2}    #1\@ckl #3
+    \makeright{#1}{\@ckr}}
+\newcommand{\CORHi}[3][\left]{\Xsub{\wh\CORSymbol}{#2} #1\@ckl #3
+    \makeright{#1}{\@ckr}}
+\newcommand{\Bini}[3][\left] {\Xsub{\BinSymbol}{#2}    #1\@vkl #3
+    \makeright{#1}{\@vkr}}
+\newcommand{\Expi}[3][\left] {\Xsub{\ExpSymbol}{#2}    #1\@vkl #3
+    \makeright{#1}{\@vkr}}
+\newcommand{\Normi}[3][\left] {\Xsub{\NormSymbol}{#2}   #1\@vkl #3
+    \makeright{#1}{\@vkr}}
+\newcommand{\Poisi}[3][\left] {\Xsub{\PoisSymbol}{#2}   #1\@vkl #3
+    \makeright{#1}{\@vkr}}
+
+%% --- Math. Operatoren ---
+
+\newcommand{\ddx}       {\frac d{dx} }
+\newcommand{\dpart}[2]  {\frac{\partial #1}{\partial #2}}
+\newcommand{\pde}[1]    {\dpart{}{#1}}
+
+\newcommand{\half}      {\frac 1 2}
+\newcommand{\eps}       {\varepsilon}
+\newcommand{\IS}        {\ {\stackrel{\rm def}{=}}\ \ }
+\newcommand{\sureIS}    {\ {\stackrel{!}{=}}\ }
+\newcommand{\Nl}[1]     {{\{1,\ldots,#1\}} } %-- = {1,...,#1}
+\newcommand{\No}[1]     {{\{0,\ldots,#1\}} } %-- = {0,...,#1}
+%%-`transposed' --  $X\tr$ == X ``transponiert''  ~=  X^T  aber eben ``schön''
+\ifx\undefined\intercal%
+ \newcommand{\tr}{^{\!\mbox{\smaller\smaller\smaller\smaller$\top$}}}
+\else%besser mit \usepackage{amssymb}:
+ \newcommand{\tr}{{}^{\intercal}}
+\fi
+\newcommand{\vk}[1]{\kern-1pt\underline{\kern1pt#1\kern-1pt}\kern1pt}
+\newcommand{\vkt}[1]{\kern1pt\wt{\kern-1pt\vk{#1}\kern1pt}\kern-1pt}
+\newcommand{\vkh}[1]{\kern1pt\wh{\kern-1pt\vk{#1}\kern1pt}\kern-1pt}
+\newcommand{\vkb}[1]{\kern1pt\overline{\kern-1pt\vk{#1}\kern1pt}\kern-1pt}
+\newcommand{\vc}[1]{\kern-1pt\underline{\kern1pt#1\kern-1pt}\kern1pt}
+\newcommand{\vct}[1]{\kern1pt\wt{\kern-1pt\vc{#1}\kern1pt}\kern-1pt}
+\newcommand{\vch}[1]{\kern1pt\wh{\kern-1pt\vc{#1}\kern1pt}\kern-1pt}
+\newcommand{\vcb}[1]{\kern1pt\overline{\kern-1pt\vc{#1}\kern1pt}\kern-1pt}
+\newcommand{\bmath}[1]{\relax\ifmmode{\mbox{\boldmath $#1$}}%
+  \else{\boldmath $#1$}\fi}    %-- W.Stahel, M. Mächler
+\newcommand{\mx}[1]{\bmath#1}  %-- ??
+\newcommand{\mxt}[1]{\mx #1\llap{$\kern1pt\wt{\phantom{#1}\kern-1pt}$}}
+\newcommand{\mxh}[1]{\mx #1\llap{$\kern1pt\wh{\phantom{#1}\kern-1pt}$}}
+\newcommand{\Vector}[1]{\left[\begin{array}{c}#1\end{array}\right]}
+\newcommand{\Matrix}[2]{\left[\begin{array}{#1}#2\end{array}\right]}
+%%old\newcommand{\Sig}{\rlap{$\kern5pt|$}\bmath\Sigma}%--'Kov.matrix Sigma'(W.Stahel)
+\newcommand{\Sig}{\relax\ifmmode\rlap{\kern0.4em\raise0.08em\hbox{$|$}}
+\bmath\Sigma\else$\Sig$\fi}
+\newcommand{\Sigh}{\widehat{\Sig}}
+\newcommand{\SSq}[1]{\mbox{SSQ}\sups{#1}{}}
+
+
+%- Scalar Prod. <.,.> :  \sp{x}{zz}  -->  < x , zz >  ---
+         \newcommand{\spr}[2]   {\left\langle #1\, , #2 \right\rangle}
+%%-- No longer (March 15, 1999): breaks 'alltt' : \sp = ``sup'' (exponent)
+%%-         \renewcommand{\sp}[2]   {\left\langle #1\, , #2 \right\rangle
+%%-  \typeout{
+%%-    ------ Use '$\backslash$spr'
+%%-    instead of '$\backslash$sp' for scalar product ! -----}}
+
+%- \abs{ab}  -->  | ab |   ``absolut Betrag''
+        \newcommand{\abs}[1]    {\left| #1 \right|}
+%- \norm{ab}  -->  || ab ||
+        \newcommand{\norm}[1]   {\left\| #1 \right\|}
+ % the above sometimes give much too long  || -- then use the following:
+        \newcommand{\normb}[1]  {\bigl\|{#1}\bigr\|}
+        \newcommand{\normB}[1]  {\Bigl\|{#1}\Bigr\|}
+%- Indicator function: \Ind{A}  : the following *is* ugly but works, see below
+        \newcommand{\Ind}[1]    {\mbox{\larger\textbf{1}}_{#1}}
+%Gives warning ``Command \large invalid in math mode on input line ..'' :
+%       \newcommand{\Ind}[1]{\mathop{\large\mathbf{1}}_{#1}}
+%       \newcommand{\Ind}[1]{{\large\mathbf{1}}_{#1}}
+
+%- For things like ``F_{Tab}'' (F-value from table):
+\newcommand{\Xsub}[2]{{#1}_{\mathrm{\scriptscriptstyle #2}}}
+\newcommand{\tSub}[1]{\Xsub{t}{#1}}
+\newcommand{\FSub}[1]{\Xsub{F}{#1}}%% \FSub{Tab} viel besser als F_{\mbox{Tab}}
+
+\ifx\undefined\degrees\newcommand{\degrees}{%
+ \typeout{------ Use '$\backslash$Degr', not '$\backslash$degrees'}}%
+\fi
+\newcommand{\Degr}{\relax\ensuremath{^\circ}}% \ifmmode^\circ\else$^\circ$\fi
+
+\newcommand{\vect}[1]   {\left( \begin{array}{c} #1 \end{array}\right)}
+        %-  ~~~~~ use as  \vect{x_1 \\ x_2 \\ \vdots \\ x_n}
+\newcommand{\vecII}[2]  {{\arraycolsep 0.04em \def\arraystretch{.75} %
+        \left(\begin{array}{c} #1 \\ #2 \end{array}\right)}}
+%--- use as \vecII{x}{y}
+% \arraycolsep: is defined in article/ report / book .sty / .doc  -- as 5 pt --
+% \arraystretch: defined in latex.tex  (as {1}) ###### Tampering with latex ####
+%% At first:
+%\let\binom\vecII%%<< nützliches Synonym
+\ifx\undefined\binom% weil {amsmath} dies auch hat
+  \newcommand*{\binom}[2]{{#1 \choose #2}}
+\fi
+\newcommand{\eq}[1]     {equation~(\ref{#1})}
+\newcommand{\Eq}[1]     {(\ref{#1})}
+% \Label: -- working with or without draft_labels.sty :
+\ifx\undefined\Label\newcommand{\Label}[1]{\label{#1}}\fi
+
+%% nicer \caption using \small\emph{.} instead of normal font (MMä):
+\newcommand{\Caption}[2][]{\ifx#1\@empty\caption{\small \emph{#2}}%
+  \else\caption[#1]{\small \emph{#2}}\fi}
+
+\ifx\undefined\block% weil {beamer} dies auch hat:
+\newcommand{\block}[1]{\hskip 0pt plus 1000pt\penalty-300\hbox{#1}}
+\fi
+
+% --- Tabellen, Figuren, Pictures <<<<< mit  epsf - style !! >>>>
+\setlength{\unitlength}{1mm}
+
+%%--- useful  \begin{Tab} ... \end{Tab} !!  ->> MERGE \btab \etab with this <<=
+\newenvironment{Tab}[1]{\begin{table}[h] \begin{center}\begin{tabular}{#1}}%
+        {\end{tabular}\end{center} \end{table}}
+\def\Bfl{}\def\Efl{}
+\newcommand{\Btab}[1]{\Btable\begin{tabular}{#1}}
+\newcommand{\Etab}[1]{\end{tabular}\Etable{#1}}
+\newcommand{\Btable}{\Bfl\begin{table}[htb]\begin{center}}
+\newcommand{\Etable}[1]{\end{center}\caption[]{#1}\end{table}\Efl}
+\newcommand{\Bfig}{\Bfl\begin{figure}[htb]}
+\newcommand{\Efig}[1]{\caption[]{#1}\end{figure}\Efl}
+\newcommand{\Bpic}{\Bfig\begin{center}\begin{picture}}
+\newcommand{\Epic}[1]{\end{picture}\end{center}\Efig{#1}}
+%%- \newcommand{\Bpsfig}[1]{\begin{figure}[htb]\Psfile{#1}}
+%%-
+%%\newcommand{\Psfile}[1]{\centerline{\includegraphics[width=140mm]{\Figdir/#1}}}
+\newcommand{\Sfig}[2]{\centerline{%
+\includegraphics[width=#1\textwidth]{\Grfile{#2}}}}
+\newcommand{\Bsfig}[2]{\Bfig\Sfig{#1}{#2}}
+\newcommand{\Bsfigx}[2]{\begin{figure}[htb]
+\centerline{planned figure from file #2}}
+\def\Putsfig#1(#2,#3)#4{\put(#2,#3){\includegraphics[width=#1\textwidth]%
+{\Grfile{#4}}}}
+\newcommand{\Grfile}[1]{\Figdir/#1}
+\newcommand{\Figdir}{.}
+\newcommand{\btab}{\Btab}
+\newcommand{\etab}{\Etab}
+\newcommand{\bfig}{\Bfig}
+\newcommand{\efig}{\Efig}
+\newcommand{\bpic}{\Bpic}
+\newcommand{\epic}{\Epic}
+\newcommand{\bpsfig}{\Bpsfig}
+\newcommand{\psfile}{\Psfile}
+\def\symb(#1)#2{\put(#1){\makebox(0,0){#2}}}
+
+\newcommand{\Hline}[1]{\\[5pt]\hline#1\\[-10pt]}
+        % allenfalls Pfad vor #1 einfuegen!
+%
+\ifx\undefined\Manind%-- is defined  in 'sfspaper.sty' ! --
+ \newcommand{\abouthere}[1]{\begin{center}[#1 about here]\end{center}}%
+\else%-- \Manind is defined ..
+% Dies macht 'abouthere{...}' zunichts, falls man NICHT ein Manuskript schreibt.
+ \newcommand{\abouthere}[1]{\if\Manind y\begin{center}[#1 about here]
+ \end{center}\fi}%
+\fi
+% --- Fuer Referee Report u.a.
+\newcommand{\iw}[4]{{\sl Instead of:}\ \ #1\underline{#2}#4\quad
+    {\sl write:}\ \ #1\underline{#3}#4 \ }
+
+% --- write to .toc file
+\newcommand{\Tocwrite}[1]{{\def\protect##1{\string\space
+\string ##1\space}
+\edef\@tempa{\write\@auxout{\string\@writefile{toc}{\protect{#1}}}}
+\@tempa}}
+\def\Starttoc{\@starttoc}
+%%%====================== Easily specify WIDTH as fraction of text-width---
+
+%\ifx\undefined\pdftexversion\newcommand{\ps}{.ps}\else\newcommand{\ps}{.pdf}\fi
+
+%%--- New (March 1999 --- finally migrate to graphicx !! ----
+%%--- ===============  However: This means we have  _THREE_ different packages
+%%--- `epsf', `epsfig', `graphics'/`graphicx'
+
+\newcommand{\texab@graph@EMPF}{^^J
+ XXX ========================================================================^^J
+ XXX Empfehlung: usepackage{graphicx} statt [dvips]{epsfig} verwenden !!! ===^^J
+ XXX ----------  ...........--------  Vorteil : ``PDF'' fähig ===============^^J
+ XXX ========================================================================^^J
+}
+
+\ifx\undefined\epsfbox%-- NOT old {epsf} nor {epsfig}: using \includegraphics
+  \ifx\undefined\includegraphics%
+                                % no graphics at all, that's fine!
+  \else
+    \newcommand{\@epsFFile}[2]{\includegraphics[#1]{#2}}%
+%%-     \typeout{^^J
+%%ooo---------------------------------------------------------------------ooo^^J
+%%ooo Well done, using includegraphics[.]{.} for the epsfCfile* commands -ooo^^J
+%%ooo---------------------------------------------------------------------ooo^^J
+%%-  }
+  \fi
+\else%%-- Either  epsfig.sty  or old  epsf.sty:
+ \typeout{\texab@graph@EMPF}
+
+  \ifx\undefined\psdraft%%------- 'epsf.sty' (latex 209)----dont-support_ROT_
+    \newcommand{\M@EPSFwarnung}{\typeout{^^J
+ XXX WARNUNG: {epsf} is  __VERY__VERY__VERY__ old fashioned =================^^J
+ XXX ======= Take  usepackage{graphicx} before usepackage{texab}/{uebung} ===^^J
+ XXX ========================================================================^^J
+ }}
+    \newcommand{\M@epsffile}[1]{\M@EPSFwarnung\epsffile{#1}}
+    \newcommand{\epsFracFile}[2]{\epsfxsize=#1\textwidth\M@epsffile{#2}}
+    \newcommand{\epsfCfile}[2]{\epsfxsize=#1\textwidth
+      \begin{center} \leavevmode\M@epsffile{#2} \end{center}}
+
+  \else%%------------------------- epsfig.sty <<<< use this ! >>>
+    \newcommand{\@epsFFile}[2]{\epsfig{file=#2,#1}}%
+  \fi%
+\fi
+%
+\ifx\undefined\epsfaux%%-- epsfig or graphicx (i.e. NOT 'epsf.sty')--- DEFAULT
+ \newcommand{\epsFracFile}[2]{\@epsFFile{width=#1\textwidth}{#2}}%
+ %%- ``Rot'' := Rotated  (by  -90 deg.):
+ \newcommand{\epsFracFileRot}[3][-90]{\@epsFFile{angle=#1,width=#2\textwidth}{#3}}%
+ % Note: these must after an (implicit) \par -- otherwise ``BAD''
+ \newcommand{\epsfCfile}[2]{\centerline{\epsFracFile{#1}{#2}}}%
+ \newcommand{\epsfCfileRot}[3][-90]{\centerline{\epsFracFileRot[#1]{#2}{#3}}}%
+\fi
+
+
+%%-- Re-activate \eqalign for  LaTeX: ---
+\newcommand{\eqalign}[1]{\null\,\vcenter{\openup\jot\m@th
+  \ialign{\strut\hfil$\displaystyle{##}$&$\displaystyle{{}##}$\hfil
+      \crcr#1\crcr}}\,}
+\newcommand{\eqalignno}[1]{\displ@y\tabskip=\centering@tex
+  \halign to\displaywidth{\hfil$\@lign\displaystyle{##}$\tabskip=0pt
+    &$\@lign\displaystyle{{}##}$\hfil\tabskip=\centering@tex
+    &\llap{$\@lign##$}\tabskip=0pt\crcr
+    #1\crcr}}
+
+%---- Was macht dies, Werner ???? :
+\newskip\centering@tex \centering@tex=0pt plus 1000pt minus 1000pt
+
+%%-- Liste von Befehlen, OHNE viel ABSTAND zw.Linien:
+%%-- Syntax:   \begin{Cmds}{ITEMCOUNTSTIL} .. \end{Cmds}
+%%-- Bsp:1 `Enumerate' \begin{Cmds}{\arabic{lisNr}. \ } \item bla \item ...\end{Cmds}
+%%-- Bsp:2 `Itemize': \begin{Cmds}{$\bullet$} \item ...
+\newenvironment{Cmds}[1]{\begin{list}{#1}{\usecounter{lisNr}
+                         \parsep=0ex\itemsep=0ex}}{\end{list}}
+\newcounter{lisNr} %-- Counter to be used in `Cmds' environment
+%% Eine Variante von 'Cmds'  für Dummies: --- not much tested yet --- modify!
+\newenvironment{Nitemize}{\begin{itemize}%
+ \itemsep=-.7ex plus .1ex minus .1ex\topsep=-1.6ex plus .1ex minus .1ex}%
+{\end{itemize}} % I can change  \itemsep , but this fails for  topsep ...
+\newenvironment{Ndescription}{\begin{description}%
+ \itemsep=-.7ex plus .1ex minus .1ex\topsep=-1.6ex plus .1ex minus .1ex}%
+{\end{description}} % I can change  \itemsep , but this fails for  topsep ...
+\newenvironment{Nenumerate}{\begin{enumerate}%
+ \itemsep=-.7ex plus .1ex minus .1ex\topsep=-1.6ex plus .1ex minus .1ex}%
+{\end{enumerate}} % I can change  \itemsep , but this fails for  topsep ...
+
+
+%%-- Fuer Uebungen mit S / SAS / Systat ... : -----------------
+\newcommand{\displ}[1]{\par\leftskip 2em \T{#1}\par\leftskip 0em\noindent
+\ignorespaces}
+\newcommand{\T}[1]      {\texttt{#1}}
+\newcommand{\Code}[2]{\texttt{#1$>$~#2}} % \Code R{hclust()}
+%
+\newcommand{\Ux}        {{\sf UNIX}}
+\newcommand*{\Splus}{\textsf{S-plus}}
+\newcommand*{\SPLUS}{\textsc{S-plus}}
+% \renewcommand*{\S}     {\message{--- use $\backslash$Splus instead of
+%     $\backslash$S !}{\sf S-plus}} %-- oder -- {{\sf S(plus)}}
+\newcommand*{\Rp}{\textsf{R}$\;$}% R program
+
+%
+\newcommand*{\is}{\(\leftarrow\)}%%Till 15.Juni 1998:\newcommand{\is}{<- }
+\newcommand*{\Gets}{\ $<\!-$ }
+\newcommand{\Sf}[2]{\T{#1}(\emph{#2})}%-- S function  {name}{argumente}
+%%-- Befehle mit Prompt : ---
+%%                     || || : diese \(. \) stehen *STATT* $.$ aus gutem Grund !
+%%                     vv_vv : damit dies auch innerhalb \begin{alltt} klappt!
+\newcommand{\Sc}[1]{\T{$>$~#1} \ }%-- S /R code mit "Prompt"  `>'
+\newcommand{\Scmd}[1]{\displ{\Sc{#1}}}%-- S /R code mit "Prompt"  `>'
+\newcommand{\ScL}[1]{\Sc{{\larger #1}}}    % ditto - gross (besser sichtbar)
+\newcommand{\Scu}[1]{\Sc{\underline{#1}}}  % ditto - unterstrichen (sichtbar)
+\newcommand{\ScU}[1]{\ScL{\underline{#1}}} % ditto - gross unterstr.(sichtbar)
+\newcommand{\Scc}[1]{\T{\(+\) #1} \ }%-- S /R code mit "continue-Prompt" `+'
+\newcommand{\SccL}[1]{\Scc{{\larger #1}}}    % ditto - gross (besser sichtbar)
+\newcommand{\Sccu}[1]{\Scc{\underline{#1}}}  % ditto - unterstrichen (sichtbar)
+\newcommand{\SccU}[1]{\SccL{\underline{#1}}} % ditto - gross unterstr.(sichtbar)
+\newcommand{\Sce}[1]{\T{#1} \ }%-- S /R code mit "empty-Prompt"
+\newcommand{\SceL}[1]{\Sce{{\larger #1}}}    % ditto - gross (besser sichtbar)
+\newcommand{\Sceu}[1]{\Sce{\underline{#1}}}  % ditto - unterstrichen (sichtbar)
+\newcommand{\SceU}[1]{\SceL{\underline{#1}}} % ditto - gross unterstr.(sichtbar)
+%%=== S/R Kommentare === ``K'' damit's nicht mit ``C''ommand verwechselt wird.
+%% NB: ./S-help.sty  hat \Scomm{} u.vieles mehr !
+\newcommand{\SkommS}[1]{\# \emph{\small #1}}% simpel
+\newcommand{\Skomm}[1]{\hspace*{\fill}\SkommS{#1}}%<ohne Newline (zB in {alltt})
+\newcommand{\Skomment}[1]{\Skomm{#1}\\ }% << mit Newline
+\let\Komm\Skomment% back compatibility
+\newenvironment{Sout}{\begin{small}\itshape}{\end{small}}% S/ R Output
+%
+\newcommand{\systat}[1]{{\begin{quote}{\small #1}\end{quote}}}
+
+%%-- Fuer jene, die immer noch nicht Emacs{AUC-tex}  C-c C-e   kennen ....
+%%-- das folgende ist WIRKLICH NICHT EMPFOHLEN !  (M.Maechler)
+\newcommand{\bi}{\begin{itemize}\typeout{
+   ------ Use the full '$\backslash$begin{itemize}'
+   instead of '$\backslash$bi' --- this is SO EASY with Emacs C-c C-e !! -----}}
+\newcommand{\ei}{\end{itemize}}
+

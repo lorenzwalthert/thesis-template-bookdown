@@ -1,0 +1,49 @@
+% --- ETHDAsfs.sty
+%\RequirePackage{ETHlogo}
+\newif\ifgerman\newif\ifenglish\newif\iffrench
+  \germantrue\englishfalse\frenchfalse
+  \def\@language{german}
+  \providecommand{\ETHlogotext}{\ETHlogotextge}
+%
+\DeclareOption{german}{% default, siehe oben
+}
+\DeclareOption{english}{%
+  \germanfalse\englishtrue\frenchfalse
+  \def\@language{english}
+  \providecommand{\ETHlogotext}{\ETHlogotexte}
+}
+\ProcessOptions
+%
+%\RequirePackage[latin1]{inputenc}% << nötig für das deutsche `ß'
+\RequirePackage{ae}% A[lmost] E[uropean] Fonts
+\ifgerman\RequirePackage{germanU}\fi
+
+\PassOptionsToPackage{\@language}{babel}
+
+% --- Package loading
+\RequirePackage{babel}
+\RequirePackage{style/sfs-hyper}%-> url, {hyperref} + options für pdflatex
+\RequirePackage{style/ETHDASA}%-- MODIFIED version ./ETHDASA.sty
+% (requires  \ifgermen  etc.)
+\ifgerman
+\laboratory{\sffamily Mathematik Department} 
+\else
+\laboratory{\sffamily Department of Mathematics}
+\fi
+% ist jetzt im Logo : \\ Seminar f\"ur Statistik
+
+\RequirePackage{amsthm}%-- Theorem / Proof, etc.  von AMS-TeX
+\ifgerman\renewcommand{\proofname}{Beweis}\fi
+
+\RequirePackage{fancyhdr}%was {fancyheadings}
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+%% MM: The following can be done much nicer with new `fancyhdr' :
+\lhead[\fancyplain{}{\bfseries \thepage}]%
+      {\fancyplain{}{\bfseries \rightmark}}
+\rhead[\fancyplain{}{\bfseries \leftmark}]%
+      {\fancyplain{}{\bfseries \thepage}}
+\cfoot{\fancyplain{\thepage}{}}
+
+\RequirePackage{parskip}%-- \parindent 0; but parskip

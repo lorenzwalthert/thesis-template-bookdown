@@ -1,0 +1,39 @@
+% **********************************************
+% *                                            *
+% *   Generic commands for laboratory data     *
+% *                                            *
+% **********************************************
+%
+% FILENAME:   labdata.gcm
+%
+% ABSTRACT:   Command definitions used by many sub styles.
+%
+% USAGE:      Used by all sub styles that require <laboratory>.sty.
+%
+% EXCEPTIONS: -
+%
+% HISTORY:    Written by Edi Saeckinger, Feb 19, 1988.
+%             Updated, ES, Mar 11, 1988. \telefaxnumber.
+%
+%             Updated, Martin Maechler, Oct.30, 1991: \department
+%
+%************************************************************************
+%
+
+\def\department#1{\def\departmentstring{#1}}
+\def\departmentstring{}
+\def\office#1{\def\officestring{#1}}
+\def\officestring{}
+\def\laboratory#1{\def\laboratorystring{#1}}
+\def\laboratorystring{}
+\def\visitaddress#1{\def\visitaddressstring{#1}}
+\def\visitaddressstring{}
+\def\postaladdress#1{\def\postaladdressstring{#1}}
+\def\postaladdressstring{}
+
+\def\extensionprefix#1{\def\extensionprefixstring{#1}}
+\def\extensionprefixstring{}
+\def\switchboardextension#1{\def\switchboardextensionstring{#1}}
+\def\switchboardextensionstring{}
+\def\telefaxnumber#1{\def\telefaxnumberstring{#1}}
+\def\telefaxnumberstring{}

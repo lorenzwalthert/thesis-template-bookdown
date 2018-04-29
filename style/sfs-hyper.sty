@@ -1,0 +1,43 @@
+%%%%-- SfS typical hyperref setup --- mainly for pdflatex -- M.Mächler
+
+\ProvidesPackage{style/sfs-hyper}%%-- to be ``required'' by other *.sty files
+
+\RequirePackage{url}
+
+% % -- don't see how this is ever used:
+% \newif\ifDviToo
+% \DeclareOption{always}{\DviTootrue}
+% %%--- Execution of options ---
+% \DviToofalse% << default
+% \ProcessOptions
+
+\RequirePackage{ifpdf}%-> defines this \if correctly:
+\ifpdf%%--- `pdflatex' :  --------- still gives error on ... \global ...
+  \message{ifpdf was true... --- PDF}
+
+  %% The following is R's share/texmf/Rd.sty
+  \RequirePackage{color}    
+  \RequirePackage{hyperref}
+  %% <NOTE>
+  %% Formerly in R's hyperref.cfg, possibly to be shared with Sweave.sty
+  %% as well (but without setting pagebackref as this can give trouble
+  %% for .bib entries containing URLs with '#' characters).
+  \definecolor{Blue}{rgb}{0,0,0.8}
+  \definecolor{Red}{rgb}{0.7,0,0}
+  \hypersetup{%
+    hyperindex,%
+    colorlinks={true},%
+    pagebackref,%
+    linktocpage,%
+    plainpages={false},%
+    linkcolor={Blue},%
+    citecolor={Blue},%
+    urlcolor={Red},%
+    pdfstartview={Fit},%
+    pdfview={XYZ null null null}%
+  }
+  %% </NOTE>
+\else%%--- simple ``latex'':
+  %% Stuff w/out hyperref
+  \message{ifpdf was false --- ``simple latex'' --- no PDF}
+\fi

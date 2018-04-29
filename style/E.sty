@@ -1,0 +1,25 @@
+% **********************************************
+% *                                            *
+% *  Substyle indicating an english document   *
+% *                                            *
+% **********************************************
+%
+% FILENAME:   E.sty
+%
+% ABSTRACT:   Defines \if<language> and sets them correspondingly. 
+%
+% USAGE:      Can be used in the option list of language dependent
+%             styles or substyles.
+%
+% EXCEPTIONS: -
+%
+% HISTORY:    Written by Edi Saeckinger, Feb 19, 1988.
+%
+%************************************************************************
+%
+\typeout{This is an english document}
+
+\newif\ifenglish \englishtrue
+\newif\ifgerman  \germanfalse
+\newif\iffrench  \frenchfalse
+\newif\ifitalian \italianfalse

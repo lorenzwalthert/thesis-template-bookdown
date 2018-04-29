@@ -1,0 +1,172 @@
+% sfsbib.sty, 
+% ~~~~~~~~~~~ $Id: sfsbib.sty,v 1.10 1999/02/03 10:01:34 sfs Exp sfs $
+%       USE C-x C-q  to CHECK IN / CHECK OUT this file (with  rcs(1))
+%
+%== harvard.sty, modified by W. Stahel, March 1994
+%   ~~~~~~~~~~~
+%  added or changed lines (within the first 20) marked by  % !!!
+%
+\message{harvard bibliography, SfS language sensitivity, $Revision: 1.10 $}
+
+%%%--- ``Notes Customization'' -------User CHANGABLE (in your FOO.tex)----------
+
+\newcommand{\annote}[1]{{\footnotesize\sc \citeAnnote} {\small \sl{#1}}}
+\@ifundefined{note}{%-- okay
+ \newcommand{\note}[1]{{\small\sc \citeNote} {\small\sl{#1}}}% ELSE:
+}{\@warning{`note' already defined! --- redefining !}%
+ \renewcommand{\note}[1]{{\small\sc \citeNote} {\small\sl{#1}}}%
+}
+\newcommand{\sfskey}[1] {{\footnotesize\sc $\;\langle$#1$\rangle\;$}}
+\newcommand{\sfscont}[1]{{\footnotesize\sc \citeSfScont} {\small \sl{#1}}}
+\newcommand{\backlabel}[1]{\citeBacklabel\ \Backlabel{#1}}
+\newcommand{\Backlabel}[1]{  \hbox{\small\bf #1}}
+\newcommand{\ETHbib}[1]{{\small\sc \citeETH}\ \hbox{#1}}
+\newcommand{\citeAnnote}[0]{ --- Annote:}
+  \def\citeNote{ }%-- ``{}'' IS DEFAULT for ALL STANDARD BibTeX-styles
+%%\def\citeNote{ --- Note:}
+\def\citeETH{eth~z:}
+\def\citeBacklabel{{\scriptsize SfS-Agro}  {\footnotesize\sc label:}}
+\def\citeSfScont{; \ SfS-cont:}
+
+%%%------------------------------ be careful when changing below !! ----
+
+%%--- Language Sensitivity --------------------------------------
+
+\def\@languagedef#1{\if g#1%            % !!!
+  \gdef\citeAnd{ und }%                 % !!!
+  \gdef\authorAnd{ und }%               % !!!
+  \gdef\citeVol{ Band}%                 % !!!
+  \gdef\citeof{ von }%                  % !!!
+  \@citeEdnG%                           % !!!
+\else \if f#1%                            % !!!
+  \gdef\citeAnd{ et }%                  % !!!
+  \gdef\authorAnd{ et }%                % !!!
+  \gdef\citeVol{ Vol.}%                 % !!!
+  \gdef\citeof{ de }%                   % !!!
+  \@citeEdnF                            % !!!
+ \else % english: default               % !!!
+  \gdef\citeAnd{ and }%                 % !!!
+  \gdef\authorAnd{ and }%               % !!!
+  \gdef\citeVol{ Vol.}%                 % !!!
+  \gdef\citeof{ of }%                   % !!!
+  \@citeEdnE                            % !!!
+ \fi
+\fi}                                    % !!!
+
+\def\@citeEdnG{\gdef\citeEdn##1{##1. Aufl.}}                 % !!!
+\def\@citeEdnE{\gdef\citeEdn##1{\ifcat##1a##1\else           % !!!
+  \ifcase##1\or 1st\or 2nd\or 3rd\else ##1th\fi\fi\ edn}}    % !!!
+\def\@citeEdnF{\gdef\citeEdn##1{\ifcat##1a##1\else           % !!!
+  \ifcase##1\or 1{\`e}re\else ##1{\`e}me\fi\fi\ edn}}        % !!!
+
+\def\@cite#1#2{{#1\if@tempswa , #2\fi}}                 % !!!-- no '('..')' !!
+
+%%NO \def\@hiteml[#1]#2#3#4{\@sfsiteml[#1]#2#3#4e}
+\def\@sfsiteml[#1]#2#3#4#5{\@languagedef#5\item[]\if@filesw%        % !!!
+      { \def\protect##1{\string ##1\space}\immediate%
+\write\@auxout{\string\harvardcite{#4}{#2}{#1}{#3}}}\fi%
+\protect\hspace*{-\labelwidth}\protect\hspace*{-\labelsep}\ignorespaces}
+
+
+%%NO \def\@hitem#1#2#3{\@sfsitem#1#2#3e}                            % !!!
+\def\@sfsitem#1#2#3#4{\@languagedef#4\item[]\if@filesw%        % !!!
+      { \def\protect##1{\string ##1\space}\immediate%
+\write\@auxout{\string\harvardcite{#3}{#1}{#1}{#2}}}\fi%
+\protect\hspace*{-\labelwidth}\protect\hspace*{-\labelsep}\ignorespaces}
+
+%%NO not used anymore: 
+%%NO \def\harvarditem{\@ifnextchar [{\@hiteml}{\@hitem}}
+
+\def\sfsitem{\@ifnextchar [{\@sfsiteml}{\@sfsitem}}       % !!!
+
+\def\harvardcite#1#2#3#4{
+  \global\@namedef{bhf@#1}{#2}
+  \global\@namedef{bha@#1}{#3}
+  \global\@namedef{bhy@#1}{#4}\global\@namedef{b@#1}{\csname bhf@#1\endcsname}
+}
+
+\def\cite{\@ifnextchar [{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
+\def\citeasnoun{\@ifnextchar [{\@tempswatrue\@citexasnoun}
+                           {\@tempswafalse\@citexasnoun[]}
+}
+\def\citeyear{\@ifnextchar [{\@tempswatrue\@citexyear}
+                           {\@tempswafalse\@citexyear[]}
+}
+\def\citename{\@ifnextchar [{\@tempswatrue\@citexname}
+                           {\@tempswafalse\@citexname[]}
+}
+% alias (MM: 16.Juli 2008):
+\let\citeauthor\citename
+
+% \def\@enamedef#1{\expandafter\edef\csname #1\endcsname}
+% Previous line should be replaced by the following to prevent
+% problems with the NFSS. Solution by Bernd Raichle.
+\def\@enamedef#1{\expandafter\def\csname #1\expandafter\endcsname\expandafter}
+
+\def\@citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+  \def\@citea{}\@cite{\@for\@citeb:=#2\do
+    {\@citea\def\@citea{\@hisep\penalty\@m\ }\@ifundefined
+       {b@\@citeb}{{\bf ?}\@warning
+       {Citation `\@citeb' on page \thepage \space undefined}}%
+{{\csname b@\@citeb\endcsname\@hysep\csname bhy@\@citeb\endcsname}%
+\global\@enamedef{b@\@citeb}{\csname bha@\@citeb\endcsname}}%
+}}{#1}}
+
+\def\@citexasnoun[#1]#2{%
+\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi%
+\@citeasnoun{{\@ifundefined%
+{b@#2}%
+{{\bf ?}\@warning{Citation `#2' on page \thepage \space undefined}}%
+{{\csname b@#2\endcsname\ (\csname bhy@#2\endcsname}%
+\global\@namedef{b@#2}{\csname bha@#2\endcsname}}%
+}}{#1}}
+
+\def\@citexname[#1]#2{%
+\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi%
+\@citename{{\@ifundefined%
+{b@#2}%
+{{\bf ?}\@warning{Citation `#2' on page \thepage \space undefined}}%
+{{\csname bhf@#2\endcsname}}%
+}}{#1}}
+
+\def\@citexyear[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+  \def\@citeayear{}\@cite{\@for\@citebyear:=#2\do
+    {\@citeayear\def\@citeayear{\@hisep\penalty\@m\ }\@ifundefined
+       {b@\@citebyear}{{\bf ?}\@warning
+       {Citation `\@citebyear' on page \thepage \space undefined}}%
+{{\csname bhy@\@citebyear\endcsname}%
+}%
+}}{#1}}
+
+\gdef\hysep@agsm{\ }\gdef\hisep@agsm{,}%
+\gdef\hysep@dcu{, }\gdef\hisep@dcu{;}%
+\let\@hysep\hysep@agsm \let\@hisep\hisep@agsm
+\def\citationstyle#1{%
+\global\@namedef{@hysep}{\csname hysep@#1\endcsname}%
+\global\@namedef{@hisep}{\csname hisep@#1\endcsname}}
+ 
+%DEFAULT DEFINITIONS
+% \def\@cite#1#2{({#1\if@tempswa , #2\fi})}                   % !!!
+\def\@citeasnoun#1#2{{#1\if@tempswa , #2\fi)}}
+\def\@citename#1#2{{#1\if@tempswa \ (#2)\fi}}
+
+% CHANGE \end{document} - to handle double definitions
+\def\enddocument{\@checkend{document}\clearpage\begingroup
+\if@filesw \immediate\closeout\@mainaux
+\def\global\@namedef##1##2{}\def\newlabel{\@testdef r}%
+\def\bibcite{\@testdef b}%
+\def\harvardcite{\@testbibh}\@tempswafalse \makeatletter\input \jobname.aux
+\if@tempswa \@warning{Label(s) may have changed.  Rerun to get
+cross-references right}\fi\fi\endgroup\deadcycles\z@\@@end}
+ 
+\def\@testbibh #1#2#3{
+  \def\@tempa{#2}\expandafter
+  \ifx \csname bhf@#1\endcsname \@tempa 
+     \def\@tempa{#3}\expandafter
+     \ifx \csname bha@#1\endcsname \@tempa
+     \else \@tempswatrue
+     \fi
+  \else
+     \@tempswatrue
+  \fi
+}

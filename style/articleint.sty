@@ -1,0 +1,97 @@
+% **********************************************
+% *                                            *
+% *    Substyle for international articles     *
+% *                                            *
+% **********************************************
+%
+% FILENAME:   articleint.sty
+%
+% ABSTRACT:   Modifications to the 'article document style V2.09' for
+%             international articles. Language dependent strings will be
+%             translated according to the chosen language (currently only
+%             D and E).
+%
+% USAGE:      \documentstyle[<lang.>,articleint]{article}
+%
+% EXCEPTIONS: "Part" is not translated, since it is defined
+%             in the artxx.sty files.
+%
+% HISTORY:    Written by Heinz Kindlimann and Edi Saeckinger, Jun 5, 1987.
+%             Introducing variable names for strings to be compatible
+%             with german.sty of H. Partl, ES, Jun 26, 1989.
+%
+%************************************************************************
+%
+\typeout{Document substyle for international articles. Released 26 June 1989}
+
+%
+% INTRODUCE VARIABLES FOR ARTICLE STRINGS
+%
+\def\tableofcontents{\section*{\contentsname
+ \@mkboth{\uppercase{\contentsname}}{\uppercase{\contentsname}}}
+ \@starttoc{toc}}
+
+\def\listoffigures{\section*{\listfigurename\@mkboth
+ {\uppercase{\listfigurename}}{\uppercase{\listfigurename}}}
+ \@starttoc{lof}}
+
+\def\listoftables{\section*{\listtablename\@mkboth
+ {\uppercase{\listtablename}}{\uppercase{\listtablename}}}\@starttoc{lot}}
+
+\def\thebibliography#1{\section*{\bibname\@mkboth
+ {\uppercase{\bibname}}{\uppercase{\bibname}}}\list
+ {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+ \advance\leftmargin\labelsep
+ \usecounter{enumi}}
+ \def\newblock{\hskip .11em plus .33em minus -.07em}
+ \sloppy
+ \sfcode`\.=1000\relax}
+
+\def\theindex{\@restonecoltrue\if@twocolumn\@restonecolfalse\fi
+\columnseprule \z@
+\columnsep 35pt\twocolumn[\section*{\indexname}]
+ \@mkboth{\uppercase{\indexname}}{\uppercase{\indexname}}
+ \thispagestyle{plain}\parindent\z@
+ \parskip\z@ plus .3pt\relax\let\item\@idxitem}
+
+\def\fnum@figure{\figurename\ \thefigure}
+\def\fnum@table{\tablename\ \thetable}
+
+\def\abstract{\if@twocolumn
+\section*{\abstractname}
+\else \small 
+\begin{center}
+{\bf \abstractname\vspace{-.5em}\vspace{0pt}} 
+\end{center}
+\quotation 
+\fi}
+
+%
+% SET VARIABLES AND REDEFINE \TODAY
+%
+\ifenglish
+\def\contentsname{Contents}
+\def\listfigurename{List of Figures}
+\def\listtablename{List of Tables}
+\def\bibname{Bibliography}
+\def\indexname{Index}
+\def\figurename{Figure}
+\def\tablename{Table}
+\def\abstractname{Abstract}
+\fi
+
+\ifgerman
+\def\contentsname{Inhaltsverzeichnis}
+\def\listfigurename{Figurenverzeichnis}
+\def\listtablename{Tabellenverzeichnis}
+\def\bibname{Literaturverzeichnis}
+\def\indexname{Sachverzeichnis}
+\def\figurename{Figur}
+\def\tablename{Tabelle}
+\def\abstractname{Zusammenfassung}
+\def\today{\number\day.\space\ifcase\month\or
+  Januar\or Februar\or M\"arz\or April\or Mai\or Juni\or
+  Juli\or August\or September\or Oktober\or November\or Dezember\fi
+  \space\number\year
+}
+\fi

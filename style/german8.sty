@@ -1,0 +1,27 @@
+%%%------ This is german8.sty --- should  NOT contain any " escapes but all
+%%%------         ~~~~~~~~~~~     the rest..  [Martin Maechler, ETH Zurich]
+%%%------ Idea: NO CATCODE redefinitions, but the rest of good latex !!
+
+\RequirePackage[latin1]{inputenc}% << nötig für das deutsche `ß'
+\RequirePackage{ae}% A[lmost] E[uropean] Fonts
+%%
+\RequirePackage{german}
+%% or (?) \RequirePackage[german]{babel}
+\newcommand{\halfgermanTeX}{%
+ \originalTeX           %%-- turn OFF german tex
+ \selectlanguage{german}%%-- 'Kapitel', etc.
+ \umlautlow             %%-- äöü: Pünktchen niedriger als default ..
+}
+\halfgermanTeX
+
+%% WSt: deutsche Anführungszeichen links und rechts
+\providecommand{\Al}{\glqq}
+\providecommand{\Ar}{\grqq}
+%% MM: Anf{....} : Einrahmen mit dt.Anführungszeichen
+\providecommand{\Anf}[1]{\glqq #1\grqq}
+
+%% Ersetzen (MM): --- NEU (12/2004) Befehl verwenden 'latex-Germ-to-8 *.tex' !
+%%                                                    ~~~~~~~~~~~~~~~
+%% perl -pi -e 's/([A-z])"a/$1ä/g; s/([A-z])"o/$1ö/g; s/([A-z])"u/$1ü/g; ' */*.tex
+%% perl -pi -e 's/\\"a/ä/g; s/\\"o/ö/g; s/\\"u/ü/g; ' */*.tex
+

@@ -1,0 +1,233 @@
+%%%--- Template for master thesis at SfS
+%%%--- Modified template with more comments and examples -- SG, 11/06/09
+%%%------
+\documentclass[11pt,a4paper,twoside,openright]{report}
+%%not needed \usepackage{E}
+\usepackage[english]{style/ETHDAsfs}%--> ETHDASA + fancyheadings + ... "umlaute"
+%  + sfs-hyper -> hyperref
+
+\usepackage{pdfpages}%%to include the confirmation of originality (plagiarism
+\usepackage{amsbsy}%% for \boldsymbol and \pmb{.}
+\usepackage{amssymb}%% calls  amsfonts...
+\usepackage{booktabs} % For \toprule etc. in tables
+\usepackage[table]{xcolor} 
+%or \usepackage{german8}%-- =  german  +  isolatin1
+\usepackage{graphicx}%-- f?r PostScript-Grafiken (besser als  psfig!)
+%\usepackage[draft]{graphicx} % grafics shown as boxes --> faster compilation
+%
+\usepackage[longnamesfirst]{natbib}%was {sfsbib}%- F?r  Literatur-Referenzen
+%           ^^^^^^^^^^^^^^ 1) "Hampel, Ronchetti, ..,"  2) "Hampel et al"
+% Engineers (and other funny people) want to see [1], [2]
+% ---> use 'numbers' : \usepackage[longnamesfirst,number]{natbib}
+%
+%
+\usepackage{style/texab}%- 'tex Abk?rzungen' /u/sfs/tex/tex/latex/texab.sty
+        %%- z.B.  \R, \Z, \Q, \Nat f?r reelle, ganze, rationale, nat?rl. Zahlen;
+        %%-       \N   (Normalvert.)  \W == Wahrscheinlichkeit .....
+        %%-  \med, \var, \Cov, \....
+        %%-  \abs{x} == |x|   und   \norm{y} ==  || y ||   (aber anst?ndig)
+%% NOTE: texab contains many useful definitions and "shortcuts". It is
+%% worth to open the file and have a look at them. HOWEVER, some
+%% definitions can lead to conflicts with other packages. You
+%% might for example want to comment out the line defininf \IF as an
+%% operator when working with the algorithmic package, or to comment out
+%% the line defining a command \Cite with working with the Biblatex package
+\usepackage{amsmath}
+%\usepackage{mathrsfs}% Raph Smith's Formal Script font --> provides \mathscr
+\usepackage{enumerate}% Fuer selbstdefinierte Nummerierungen
+%--------
+\usepackage{relsize}%-> \smaller (etc) used here
+\usepackage{color} %% to allow cloring in code listings
+\usepackage{listings}% Fuer R-code, C-code, ....  and settings for these:
+\definecolor{Mygrey}{gray}{0.75}% for linenumbers only!
+\definecolor{Cgrey}{gray}{0.4}% for comments
+\lstloadlanguages{R}
+\lstset{ %% Hilfe unter z.B. http://en.wikibooks.org/wiki/LaTeX/Packages/Listings
+language=R,
+basicstyle=\ttfamily\scriptsize,%%- \small > \footnotesize > \scriptsize > \tiny
+%commentstyle=\ttfamily\color{Cgrey},
+commentstyle=\itshape\color{Cgrey},
+numbers=left,
+numberstyle=\ttfamily\color{Mygrey}\tiny,
+stepnumber=1,
+numbersep=5pt,
+backgroundcolor=\color{white},
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+frame=single,
+tabsize=2,
+captionpos=b,
+breaklines=true,
+%breakatwhitespace=false,
+keywordstyle={},
+morekeywords={},
+xleftmargin=4ex,
+literate={<-}{{$$\leftarrow$$}}1 {~}{{$$\sim$$}}1}
+\lstset{escapeinside={(*}{*)}} % for (*\ref{ }*) inside lstlistings (Scode)
+%%----------------------------------------------------------------------------
+
+%%------- Theoreme ---
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{Coro}[definition]{Corollary}
+\theoremstyle{definition}
+\newtheorem{example}[definition]{Example}
+\newtheorem*{note}{Note}
+\newtheorem*{remark}{Remark}
+
+\DeclareMathOperator*{\plim}{plim}
+% \def\MR#1{\href{http://www.ams.org/mathscinet-getitem?mr=#1}{MR#1}}
+
+% \newcommand{\Lecture}[3]{\marginpar{#3.#2.#1}}
+% \newcommand{\Fu}{\mathcal{F}}
+\newcommand{\aatop}[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
+
+%\renewcommand{\theequation}{\arabic{equation}}
+\numberwithin{equation}{subsection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Path for your figures                      %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set the paths where all figures are taken from:
+\graphicspath{{images/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Define your own commands here             %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Bruch}[2]{{}^{#1}\!\!/\!_{#2}}
+\renewcommand{\labelenumi}{\roman{enumi}.)}
+
+
+
+\begin{document}
+\bibliographystyle{style/chicago}% ---> Hampel,F., E.Ronchetti,... W.Stahel(1986) ...
+ %was \bibliographystyle{sfsbib}\citationstyle{dcu} %OR DEFAULT : \citationstyle{agsm}
+
+\pagenumbering{roman}%- roman numbering for first few pages
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Title page                                %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\period{$date$}
+\dasatype{Master Thesis}
+\students{$author$}
+$if(coadviser)$
+\alternatereaderprefix{Co-Adviser:}
+\alternatereader{$coadviser$}
+\mainreaderprefix{Adviser:}
+\mainreader{$adviser$}
+$else$
+\alternatereaderprefix{Adviser:}
+\alternatereader{$adviser$}
+\mainreaderprefix{}
+\mainreader{}
+$endif$
+
+
+\submissiondate{$submission_date$}
+\title{$title$}
+
+\maketitle%- Titelseite wird abgeschlossen
+\cleardoublepage
+ %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Insert here acknowledgements and abstract %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Dedication (optional)
+\markright{}
+\vspace*{\stretch{1}}
+\begin{center}
+    To some special person
+\end{center}
+\vspace*{\stretch{2}}
+
+% Preface (optional)
+\newpage
+\markboth{Preface}{Preface}
+\include{tex/Preface}
+
+% Abstract should not be longer than one page.
+\newpage
+\markboth{Abstract}{Abstract}
+\include{tex/Abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Table of contents and list of figures and %%%
+%%% tables (no need to change this usually)   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+
+%% Notations and glossary (optional)
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\protect\numberline{}{Notation}}
+\markboth{Notation}{Notation}
+\include{tex/Notation}
+
+\cleardoublepage
+\pagenumbering{arabic}%--- switch back to standard numbering
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Your text... Either write here directly,  %%%
+%%% or even better: write in separate files   %%%
+%%% that you just have to include here.       %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$body$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Bibliography                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addtocontents{toc}{\vspace{.5\baselineskip}}
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\protect\numberline{}{Bibliography}}
+\bibliography{bib/bib}
+
+%% All books from our library (SfS) are already in a BiBTeX file
+%% (Assbib). You can use Assbib combined with your personal BiBTeX file:
+%% \bibliography{Myreferences,Assbib}. Of course, this will only work on
+%% the computers at SfS, unless you copy the Assbib file
+%%  --> /u/sfs/bib/Assbib.bib
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Appendices (if needed)                    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addtocontents{toc}{\vspace{.5\baselineskip}}
+\appendix
+\include{tex/Appendix1}
+\include{tex/Appendix2}
+
+
+%% Epilogue (optional)
+\addtocontents{toc}{\vspace{.5\baselineskip}}
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\protect\numberline{}{Epilogue}}
+\markboth{Epilogue}{Epilogue}
+\include{tex/Epilogue}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Declaration of originality (Do not remove!)%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Instructions:
+%% -------------
+%% fill in the empty document confirmation-originality.pdf electronically
+%% print it out and sign it
+%% scan it in again and save the scan in this directory with name
+%% confirmation-originality-scan.pdf
+%%
+%% General info on plagiarism:
+%% https://www.ethz.ch/students/en/studies/performance-assessments/plagiarism.html
+\cleardoublepage
+\includepdf[pages={-}, frame=true,scale=1]{pdf/confirmation-originality.pdf}
+\end{document}

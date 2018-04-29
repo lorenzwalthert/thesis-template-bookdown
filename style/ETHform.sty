@@ -1,0 +1,47 @@
+%% ORIG: /usr/local/app/teTeX/texmflocal/tex/latex209/ifemacros/ETHform.sty
+% **********************************************
+% *                                            *
+% *        Page style with ETH logo            *
+% *                                            *
+% **********************************************
+%
+% FILENAME:   ETHform.sty
+%
+% ABSTRACT:   This file defines a page style with the name ETHform.
+%             It contains the ETH logo in the head and has an empty foot.
+%
+% USAGE:      e.g. \thispagestyle{ETHform}
+%
+% EXCEPTIONS: -
+%
+% HISTORY:    Written by Edi Saeckinger, Dec 1, 1986.
+%             Corrections by ES, Feb 19, 1988. (newsavebox, logo)
+%
+%************************************************************************
+%
+\typeout{Page style with ETH logo. Released 19 February 1988}
+\def\es{} % eat space for nice formatting
+
+%
+% DEFINE INDEPENDENT SIZE
+%
+\def\lhsize{\@setsize\lhsize{12pt}\xpt\@xpt} % text size for letter head
+
+%
+% PAGE LAYOUT
+%
+\headheight 1.5cm                  % Height for ETH logo
+%
+\RequirePackage{style/ETHSfSlogo}
+%
+% DEFINE THE PAGE STYLE
+%
+\def\ps@ETHform{%
+  \def\@oddhead{\hspace*{-5pt}\raise 20pt\hbox{\ETHlogo}\hfill
+    \raise 19pt\hbox{\SfSlogo}\hspace*{-5pt}}   
+% \setlength{\logounitlength}{0.06mm}
+  \def\@oddfoot{}            % Empty foot
+  \let\@evenhead\@oddhead    % Same for evenhead/foot
+  \def\@evenfoot{}
+  \thispagestyle{empty}
+}

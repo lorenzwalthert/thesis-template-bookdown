@@ -1,0 +1,51 @@
+\chapter{First Chapter} 
+
+\section{To include a picture}
+\begin{figure}[hbt!]%--- Picture 'H'ere, 'B'ottom or 'T'op; '!' Try to
+                    %impose your will to LaTeX
+  \epsfCfile{.85}{geys-2kern} %<< no file extension
+  %%         --- .85 stands for 85% of text width
+  \caption[Geyser data: binned histogram, Silverman's and another
+  kernel]%<<-- Legend for the list of figures at the beginning of you thesis
+  {Old Faithful Geyser eruption lengths, $n=272$; binned data and two
+    (Gaussian) kernel density estimates ($\times 10$) with $h=h^*= .3348$
+    and $h= .1$ (dotted).}% legend displayed below the graph.
+  \label{fig:geys1}
+\end{figure}
+
+Or also with \texttt{includegraphics}:
+\begin{figure}[hbt!]%--- Picture 'H'ere, 'B'ottom or 'T'op; '!' Try to
+                    %impose your will to LaTeX
+  \centering
+  \includegraphics[width=.5\textwidth]{geys-2kern} %<< no file extension
+  %%         --- .5\textwidth stands for 50% of text width
+  \caption[Geyser data: binned histogram, Silverman's and another
+  kernel]%<<-- Legend for the list of figures at the beginning of you thesis
+  {Old Faithful Geyser eruption lengths, $n=272$; binned data and two
+    (Gaussian) kernel density estimates ($\times 10$) with $h=h^*= .3348$
+    and $h= .1$ (dotted).}% legend displayed below the graph.
+  \label{fig:geys2}
+\end{figure}
+
+\section{To make a proof}
+\begin{proof}
+  $1 + 1 = 2$
+\end{proof}
+
+
+
+\section{Other information}
+Put a text between quotes: make sure to use nice quotes, such as ``quote''.
+
+Cite a document in the bibliography (an example here): \cite{Reference}.
+%%--> in file   myReferences.bib  (same directory)
+Or mention that \citeauthor{HamF85} (a person) or \citeauthor{StaWW91} (two
+persons) have already done quite a bit work.
+
+Referencing a different part of your work: please refer to Appendix \ref{app:complement}.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "MasterThesisSfS"
+%%% End: 

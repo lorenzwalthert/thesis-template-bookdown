@@ -1,0 +1,32 @@
+% **********************************************
+% *                                            *
+% *    String definitions for ETHDASA.sty      *
+% *                                            *
+% **********************************************
+%
+% FILENAME:   ETHDASA.str
+%
+% ABSTRACT:   Language dependent strings of ETHDASA.sty are set here.
+%
+% USAGE:      Used by ETHDASA.sty
+%
+% EXCEPTIONS: -
+%
+% HISTORY:    Written by Edi Saeckinger, Feb 19, 1988.
+%
+%************************************************************************
+%
+
+\ifenglish \mainreaderprefix{Main Reader:} \fi
+\ifgerman  \mainreaderprefix{Betreuer:} \fi
+%%% modified by S. Gerster, August 2007
+\ifenglish \alternatereaderprefix{Adviser:} \fi
+\ifgerman  \alternatereaderprefix{Stellvertreter:} \fi
+
+\ifenglish \issuedateprefix{Issue Date:} \fi
+\ifgerman  \issuedateprefix{Ausgabe:} \fi
+\ifenglish \submissiondateprefix{Submission Date:} \fi
+\ifgerman  \submissiondateprefix{Abgabe:} \fi
+
+\ifenglish \dateprefix{} \fi
+\ifgerman  \dateprefix{Z\"urich, den} \fi

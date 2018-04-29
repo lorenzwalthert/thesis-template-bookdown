@@ -1,0 +1,197 @@
+%%% ETHDASA.sty --- ETH Diplom-Arbeit / Studenten-Arbeit
+%%% -------
+%% ORIGINAL:  /usr/local/tex_local/tex/latex209/ifemacros/ETHDASA.sty
+%%
+%% Modifiziert:   Martin Mächler, Seminar für Statistik, Feb.1997 ...
+%%
+%% 1)   report     statt article
+%% 2)  maketitle:  Titelseite: grössere Schriften, anderer Layout
+%% 3)  twopage  option 
+
+% **********************************************
+% *                                            *
+% * Substyle for ETH Diplom- and Stud.arbeiten *
+% *                                            *
+% **********************************************
+%
+% FILENAME:   ETHDASA.sty
+%
+% ABSTRACT:   Modifications to the 'article document style V2.09' for
+%             ETH Diplom- and Studienarbeiten. This style defines the following
+%             additional commands: \period, \dasatype, \students, \mainreader,
+%             \alternatereader, \issuedate, \submissiondate, \title,
+%             \dateandsignature, \laboratory, \group, \professor and optional
+%             \date. The macro \maketitle is redefined in order to produce the 
+%             DASA title.
+%
+% USAGE:      \documentstyle[<lang.>,ETHDASA,<lab.>,<pers.>]{article}
+%
+% EXCEPTIONS: -
+%
+% HISTORY:    Written by Josef Goette, Aug 5, 1987.
+%             Abgeaendert durch Marcel Jacomet, Sep, 1987.
+%             Aenderung in signature H. Kindlimann, Okt 87. (\vskip)
+%             Rewritten by Edi Saeckinger, Nov 27, 1987.
+%
+%************************************************************************
+%
+\typeout{Document substyle for DA/SA. Released 27 November 1987}
+%antique:\def\es{} % eat space for nice formatting
+
+%
+% PAGE LAYOUT
+%
+% ---- vertical ------
+\setlength{\textheight}{23.5cm}
+\setlength{\topmargin}{-1cm}
+\setlength{\headheight}{10mm}% statt 15 (-5)
+\setlength{\headsep}{8mm}    % statt  3 (+5)
+% ---- horizontal ----
+\setlength{\textwidth}{15cm}
+% Margins: ``Aussen etwas mehr als innen'' (twoside !) aber schön symmetrisch
+\setlength{\oddsidemargin}{0mm}%- statt 5mm wie original
+\setlength{\evensidemargin}{9mm}%- war 1in = 25.4mm [= DEFAULT] in original
+
+%
+% MAKETITLE FOR DASA (by Josef Goette) -- Modified: M.Mächler
+%
+\def\maketitle{%\par
+ \begingroup
+   \def\thefootnote{\fnsymbol{footnote}}
+   \def\@makefnmark{\hbox   
+       to 0pt{$^{\@thefnmark}$\hss}}   
+   \if@twocolumn               
+     \twocolumn[\@maketitle]   
+     \else \newpage
+     \global\@topnum\z@        % Prevents figures from going at top of page.
+     \@maketitle \fi\thispagestyle{ETHform}\@thanks
+ \endgroup
+ \setcounter{footnote}{0}
+ \let\maketitle\relax
+ \let\@maketitle\relax
+ \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax}
+
+\def\@maketitle{\newpage
+  \vspace{1pt}%WS(2002-08-14):{10pt}
+  {\sffamily\bfseries\noindent{\laboratorystring}\\
+    \groupstring}
+  \par\vspace*{-2pt}%WS(2002-08-14):\vspace{10pt}
+  %% change spaces around the top bar
+  \rule{\textwidth}{.3pt}\\[1pt]%\par-------------------------------------------
+  \vspace*{-12pt}
+  \begin{center} 
+    \Large \dasatypestring
+    \hfill %oder \hspace{2em}%% auf gleiche Linie
+%%% size modified by S. Gerster, August 2007
+    \Large \periodstring
+    \\[2pt] 
+  \end{center}
+  %sg \par\vspace*{-20pt}
+  \rule{\textwidth}{.3pt}%-----------------------------------------------------
+%
+  \medskip
+%%% modified by S. Gerster, August 2007
+\vspace{70pt}
+  \begin{center} \bfseries
+    \Large \studentstring
+    
+    \vspace{2ex plus 1ex minus 1.5ex}
+    
+    \LARGE \titlestring
+  \end{center}
+  
+  \vspace{\stretch{2}}%4ex plus 10ex minus 2ex}
+
+  \titlemidCMD %% e.g. \epfCfile{..}{..}
+  
+  \vspace{\stretch{3}}
+
+  \begin{center} \large
+    \rule{.5\textwidth}{.3pt} \\[8pt]%---------------------
+    \begin{tabular}{ll}
+%% commented by S. Gerster, August 2007
+%%%%      \issuedateprefixstring      & \issuedatestring \\
+      \submissiondateprefixstring & \submissiondatestring
+    \end{tabular}
+    \\[5pt] \rule{.5\textwidth}{.3pt}%---------------------   
+    
+    \vspace{2ex plus 25ex minus 1.5ex}
+    
+    \begin{tabular}{ll}
+%% order swaped by S. Gerster, August 2007
+      \alternatereaderprefixstring & \alternatereaderstring \\
+%%% modified by S. Gerster, August 2007
+      \mainreaderprefixstring      & \mainreaderstring %%%\textbf{\mainreaderstring} 
+    \end{tabular}
+  \end{center}
+  \vspace*{-14pt}
+  %%N Linie nicht mehr nötig, da jetzt zuunterst:
+  %%N \rule{\textwidth}{.3pt}%------------------------------------------------
+  %%N  \par
+  %%\vspace{...}
+}
+
+%
+% DATE AND SIGNATURE (by Heinz Kindlimann)
+%
+\newcommand{\dateandsignature}{
+  \vskip3cm plus0pt minus2cm
+    \noindent
+    \parbox{\textwidth}{
+      \raggedleft
+      \dateprefixstring\ \@date \\[1.5cm]
+      \professorstring
+    }
+}
+
+%
+% TRANSLATE ARTICLE STRINGS
+%
+\input{style/articleint.sty}
+
+%
+% THE GENERIC DASA-COMMANDS
+%
+\def\period#1{\def\periodstring{#1}}
+\def\periodstring{}
+\def\dasatype#1{\def\dasatypestring{#1}}
+\def\dasatypestring{}
+\def\students#1{\def\studentstring{#1}}
+\def\studentstring{}
+\def\mainreader#1{\def\mainreaderstring{#1}}
+\def\mainreaderstring{}
+\def\mainreaderprefix#1{\def\mainreaderprefixstring{#1}}
+\def\mainreaderprefixstring{}
+\def\alternatereader#1{\def\alternatereaderstring{#1}}
+\def\alternatereaderstring{}
+\def\alternatereaderprefix#1{\def\alternatereaderprefixstring{#1}}
+\def\alternatereaderprefixstring{}
+\def\issuedate#1{\def\issuedatestring{#1}}
+\def\issuedatestring{}
+\def\issuedateprefix#1{\def\issuedateprefixstring{#1}}
+\def\issuedateprefixstring{}
+\def\submissiondate#1{\def\submissiondatestring{#1}}
+\def\submissiondatestring{}
+\def\submissiondateprefix#1{\def\submissiondateprefixstring{#1}}
+\def\submissiondateprefixstring{}
+\renewcommand{\title}[1]{\def\titlestring{#1}}
+\def\titlestring{}
+\def\dateprefix#1{\def\dateprefixstring{#1}}
+\def\dateprefixstring{}
+% new
+\def\titlemidCMD{}
+\newcommand{\titlemid}[1]{\renewcommand{\titlemidCMD}{#1}}
+%
+\input{style/labdata.gcm}
+\input{style/perdata.gcm}
+
+%
+% INITIALIZE STRINGS
+%
+\input{style/ETHDASA.str}
+
+%
+% PAGE STYLE
+%
+\def\@texttop{}
+\input{style/ETHform.sty}

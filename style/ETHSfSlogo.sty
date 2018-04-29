@@ -1,0 +1,58 @@
+%% New File by Martin Maechler ---
+%% --------------------------------
+%% Define the  [ETH]  ``savebox'' which is used by ETHletter, ETHvisit, ...
+%%
+\typeout{MM's / WSt's ETH logo definitions for ETHletter,ETHvisit,...}
+%
+\newlength{\logounitlength}
+\setlength{\logounitlength}{0.08mm}
+%
+\def\ETHpic{\begin{picture}(330,110)(0,-5)
+       % E letter
+       \thicklines
+       \multiput(0,0)(2,0){16}{\line(1,4){25}}
+       \multiput(1,0)(0.5,2){12}{\line(1,0){84}}
+       \multiput(42,40.4)(0.5,2){11}{\line(1,0){53}}
+       \multiput(19.5,78.8)(0.5,2){12}{\line(1,0){210}}
+       % T letter
+       \multiput(116,0)(2,0){16}{\line(1,4){24}}
+       % H letter
+       \multiput(180,0)(2,0){16}{\line(1,4){25}}
+       \multiput(237,0)(2,0){16}{\line(1,4){25}} % 178 + 42 + 13
+       \multiput(220,39)(0.5,2){12}{\line(1,0){30}}
+       \put(262.5,100){\line(1,0){30}}
+\end{picture}}
+%%% modified by S. Gerster
+\newcommand{\ETHlogotextge}{Swiss Federal Institute of Technology Zurich\\}%Eidgen\"ossische Technische Hochschule
+%  Z\"urich\\}
+\newcommand{\ETHlogotexte}{ETH Zurich\\}%was {Swiss Federal Institute of Technology Zurich\\}
+\newcommand{\ETHlogotextfe}{Ecole polytechnique f\'ed\'erale de Zurich\\
+    ETH Zurich}%was Swiss Federal Institute of Technology Zurich}
+\providecommand{\ETHlogotext}{\ETHlogotextge}
+\newcommand{\ETHlogo}{
+\parbox{100mm}{\vbox{\kern2pt\setlength{\unitlength}{\logounitlength}\ETHpic
+\hfill\break\sffamily\bfseries\ETHlogotext}}}
+%
+\newsavebox{\ETHlogoETH}
+\newsavebox{\ETHlogoETHfull}
+\sbox{\ETHlogoETH}{\logounitlength 0.06mm\ETHlogo}
+\sbox{\ETHlogoETHfull}{\logounitlength 0.06mm\ETHlogo}
+% -----------------------------------------------------
+\def\SfSpic{\begin{picture}(330,110)(0,-5)
+\end{picture}}
+\newcommand{\SfSlogo}{\parbox{40mm}{\hfill\kern2pt
+\setlength{\unitlength}{\logounitlength}\SfSpic\\
+\sffamily\bfseries
+%%% modified by S. Gerster / WSt
+\null\hfill \SfSlogotexta\kern3mm\break
+\null\hfill \phantom{g}\SfSlogotextb\kern3mm%
+}}
+\newcommand{\SfSlogotexta}{Seminar for}
+\newcommand{\SfSlogotextb}{Statistics}
+\newcommand{\SfSlogotextage}{Seminar f\"ur}
+\newcommand{\SfSlogotextbge}{Statistik}
+% ----------------------
+\newcommand{\ETHSfSlogo}{\setlength{\unitlength}{\logounitlength}
+  \parbox{\textwidth}{\begin{minipage}[t]{80mm}\ETHlogo\end{minipage}
+  \hfill\begin{minipage}[t]{40mm}\SfSlogo\end{minipage}}\vspace{1mm}}
+% ----------------------

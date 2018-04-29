@@ -1,0 +1,46 @@
+% **********************************************
+% *                                            *
+% *     Generic commands for personal data     *
+% *                                            *
+% **********************************************
+%
+% FILENAME:   perdata.gcm
+%
+% ABSTRACT:   Command definitions used by many sub styles.
+%
+% USAGE:      Used by all sub styles that require <person>.sty.
+%
+% EXCEPTIONS: -
+%
+% HISTORY:    Written by Edi Saeckinger, Feb 19, 1988.
+%
+%************************************************************************
+%
+
+% This are definitions from the original letter.sty
+\def\name#1{\def\fromname{#1}}
+\def\fromname{}
+\def\signature#1{\def\fromsig{#1}}
+\def\fromsig{}
+\long\def\address#1{\def\fromaddress{#1}}
+\def\fromaddress{}
+\def\location#1{\def\fromlocation{#1}}
+\def\fromlocation{}
+
+% This are additions for the ETH styles
+\def\group#1{\def\groupstring{#1}}
+\def\groupstring{}
+\def\professor#1{\def\professorstring{#1}}
+\def\professorstring{}
+\def\functiona#1{\def\functionastring{#1}}
+\def\functionastring{}
+\def\functionb#1{\def\functionbstring{#1}}
+\def\functionbstring{}
+\def\extension#1{\def\extensionstring{#1}}
+\def\extensionstring{}
+\def\emailaddressa#1{\def\emailaddressstringa{#1}}
+\def\emailaddressstringa{}
+\def\emailaddressb#1{\def\emailaddressstringb{#1}}
+\def\emailaddressstringb{}
+\def\emailaddressc#1{\def\emailaddressstringc{#1}}
+\def\emailaddressstringc{}

@@ -1,0 +1,28 @@
+--- 
+title: "Causality in Heavy-Tailed Data"
+author: "Nicola Gnecco"
+date: "Summer 2018"
+submission_date: "August 1th 2018"
+adviser: "Prof. Dr. Nicolai Meinshausen"
+coadviser:
+output:
+  bookdown::pdf_book:
+    template: tex/MasterThesisSfS.tex
+    keep_tex: yes
+    citation_package: natbib
+    latex_engine: pdflatex
+    toc_depth: 3
+    toc_unnumbered: no
+    toc_appendix: yes
+    pandoc_args: --chapters
+    quote_footer: ["\\begin{flushright}", "\\end{flushright}"]
+  bookdown::gitbook: default
+bibliography: [bib/bib.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: no  
+# toc: no
+lot: no
+lof: no
+site: bookdown::bookdown_site
+---
