@@ -14,7 +14,6 @@ output:
     toc_depth: 3
     toc_unnumbered: no
     toc_appendix: yes
-    pandoc_args: --chapters
     quote_footer: ["\\begin{flushright}", "\\end{flushright}"]
   bookdown::gitbook: default
 bibliography: [bib/bib.bib]
