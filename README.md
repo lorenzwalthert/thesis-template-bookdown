@@ -21,11 +21,14 @@ The basic workflow is as follows:
     thesis is under `./rmd/`. For example, change `02-features.Rmd`
   - Re-compile the book using Cmd + Shift + B (for build) on a Mac and
     Ctrl + Shift + B on Windows / Linux.
+  - You can customize the build in the RStudio Build Tab, where you can
+    specify which output (html, pdf, etc.) you want to generate. This is
+    remembered for the next build you are doing.s
 
 **Why using bookdown**
 
 The advantages of using bookdown instead of plain LaTeX are, in the eyes
-of the creator of this template.
+of the creator of this template:
 
   - Generalization. Not just latex or PDF output, but any output
     supported by Pandoc.
@@ -35,12 +38,11 @@ of the creator of this template.
     reference, LaTeX cross-, text- and figure reference.
   - It’s native R. Integrate R code and R output in your writing has
     never been easier than with bookdown. You can also use other
-    languages supported by knitr such as python, stan etc.
+    languages supported by knitr such as python, stan etc.\[1\]
 
 **How this template works**
 
-There are different directories in this template. We canuse the bash
-command tee to show the output
+There are different directories in this template:
 
 ``` bash
 tree -d -L 2 --charset unicode
@@ -93,7 +95,7 @@ the project:
     thesis from scratch, the can use `remotes::install_deps()` to
     satisfy all R package dependencies.
   - index.R: Contains a YAML header where a few important variables are
-    defined. You can also put markdown below the HEADER.
+    defined. You can also put markdown below the header.
   - README.(R)md This document.
   - thesis-template-bookdown.Rproj: An RStudio project. We recommend
     using RStudio for authoring your master thesis with bookdown.
@@ -117,3 +119,8 @@ experience writing their master thesis.
 Best,
 
 Nicola Gnecco and Lorenz Walthert
+
+1.  Below, we even used the bash command `tree` to show the directory
+    structure of this repo. Since unicode is not suppored with pdflatex,
+    we used R code to tell knitr to use the tree command with the option
+    `charset unicode` for pdf output and without it for html output.
