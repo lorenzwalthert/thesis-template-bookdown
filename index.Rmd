@@ -18,6 +18,10 @@ output:
     toc_appendix: yes
     toc_bib: yes
     quote_footer: ["\\begin{flushright}", "\\end{flushright}"]
+    highlight: 
+      tango
+    includes:
+      in_header: tex/preamble.tex
   bookdown::gitbook: default
 bibliography: [bib/bib.bib]
 biblio-style: apalike
@@ -28,9 +32,11 @@ lof: no
 site: bookdown::bookdown_site
 ---
 
-[comment]: <> (You'd usually put a preface here and get rid of the warning:
-Warning message:
-In split_chapters(output, gitbook_page, number_sections, split_by,  :
-  You have 8 Rmd input file(s) but only 7 first-level heading(s). Did you 
-  forget first-level headings in certain Rmd files?
-)
+---
+#[comment]: <> (You'd usually put a preface here and get rid of the warning:
+#Warning message:
+#In split_chapters(output, gitbook_page, number_sections, split_by,  :
+#  You have 8 Rmd input file(s) but only 7 first-level heading(s). Did you 
+#  forget first-level headings in certain Rmd files?
+#)
+---
