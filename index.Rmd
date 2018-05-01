@@ -1,11 +1,13 @@
 --- 
-title: "Causality in Heavy-Tailed Data"
-author: "Nicola Gnecco"
-date: "Summer 2018"
+title: "A bookdown template for sfs"
+author: "Nicola Gnecco and Lorenz Walthert"
+date: "April 2018"
 submission_date: "August 1th 2018"
 adviser: "Prof. Dr. Nicolai Meinshausen"
 coadviser:
 output:
+  bookdown::epub_book:
+    default
   bookdown::pdf_book:
     template: tex/MasterThesisSfS.tex
     keep_tex: yes
@@ -25,3 +27,10 @@ lot: no
 lof: no
 site: bookdown::bookdown_site
 ---
+
+[comment]: <> (You'd usually put a preface here and get rid of the warning:
+Warning message:
+In split_chapters(output, gitbook_page, number_sections, split_by,  :
+  You have 8 Rmd input file(s) but only 7 first-level heading(s). Did you 
+  forget first-level headings in certain Rmd files?
+)
