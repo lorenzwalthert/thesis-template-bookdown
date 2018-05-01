@@ -20,7 +20,7 @@ from the semiar for statistics, ETH Zurich.
 
 **How bookdown works**
 
-bookdown in general works as follows:
+In a nutshell, bookdown works as follows:
 
 * use knitr to convert Rmd to markdown.
 * use pandoc to convert markdown to latex, pdf, word, html books (with featuers
@@ -89,15 +89,34 @@ tree -d -L 2 --charset unicode
 Furthermore, we want to highlight a few files in the root directory of the
 project:
 
-* DESCRIPTION: You can use it to declare dependent packages of your thesis in 
+* `DESCRIPTION`: You can use it to declare dependent packages of your thesis in 
   the `Imports:` field. If someone want's to rebuild you thesis from scratch,
   the can use `remotes::install_deps()` to satisfy all R package dependencies.
-* index.R: Contains a YAML header where a few important variables are defined.
+* `index.Rmd`: Contains a YAML header where a few important variables are defined.
   You can also put markdown below the header.
-* README.(R)md This document.
-* thesis-template-bookdown.Rproj: An RStudio project. We recommend using 
- RStudio for authoring your master thesis with bookdown.
-  
+* `README.(R)md`: This document.
+* `thesis-template-bookdown.Rproj`: An RStudio project. We recommend using 
+  RStudio for authoring your master thesis with bookdown.
+
+**A few recommendations**
+
+* We strongly suggest to use a different folder for the data / code of your 
+  thesis and reserve this directory for the thesis document only. You can 
+  reaname this directory `analysis-communication` (since this will be the
+  means used for communicating the results and process of your thesis) and
+  use `analysis-raw` for the code and `data` for all data. Ideally, you 
+  place them in the same directory so you can still work with relative paths,
+  e.g. `../data`.
+* We suggest to use git version control for the thesis and the raw analsyis.
+* If your thesis is open source, you can use netlify.com to deploy it, i.e. 
+  for every commit you push to a remote repo like GitHub, you can use netlify's
+  CLI to build your book on a CI machine like travis. See file `travis.yml` for
+  the bookdown book 
+  [Advanced R](https://github.com/hadley/adv-r/tree/88dcb07e2b2ae634af6cdeafff2f3ea976077064)
+  for an example. That makes tracking the `_book` folder in git redundant.
+
+**Further material**
+
 This is obviously a very short introduction to the template and it is in no way
 comprehensive. To learn more about bookdown, we encourage the reader to have 
 a look at the [bookdown guide](https://bookdown.org/yihui/bookdown/) as well 
@@ -109,7 +128,8 @@ As of early 2018, this template is still in alpha testing phase, so you may
 experience unexpected behavior. Please file an issue on the git repository
 where you have obtained the source of this template in case 
 you are stuck for some time with a problem or if you found a solution to a 
-problem you believe others are likely to encounter in the future. We want to 
+problem you believe others are likely to encounter in the future. Pull requests
+on typos are also welcome. We want to 
 make sure that students working this template have a great experience writing 
 their master thesis.
 
