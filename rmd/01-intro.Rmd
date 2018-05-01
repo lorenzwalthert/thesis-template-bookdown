@@ -1,0 +1,11 @@
+# Introduction
+
+The R package `bookdownplus` [@Reference] , [@HamF85], @StaWW91 [p. 15] is an
+extension of `bookdown`. Indeed, you can also just dispay the year from 
+the reference: I.e. Stahel was right [-@StaWW91]. You can find all supported
+citation formats [here](http://pandoc.org/MANUAL.html#citations).
+
+It is a collection of multiple templates on the basis
+of LaTeX, which are tailored so that I can work happily under the umbrella of
+`bookdown`. `bookdownplus` helps you write academic journal articles, guitar
+books, chemical equations, mails, calendars, and diaries.

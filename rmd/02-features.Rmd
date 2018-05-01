@@ -1,0 +1,29 @@
+# Features
+
+`bookdownplus` extends the features of `bookdown`, and simplifies the
+procedure. Users only have to choose a template, clarify the book title and
+author name, and then focus on writing the text. No need to struggle in YAML
+and LaTeX.
+With `bookdownplus` users can
+
+-   record guitar chords,
+
+-   write a mail in an elegant layout,
+
+-   write a laboratory journal, or a personal diary,
+
+-   draw a monthly or weekly or conference calendar,
+
+-   and, of course, write academic articles in your favourite way,
+
+-   with chemical molecular formulae and equations,
+
+-   even in Chinese,
+
+-   and more wonders will come soon.
+
+Full documentation can be found in the book 
+[R bookdownplus Textbook](https://bookdown.org/baydap/bookdownplus). The webpage 
+looks so-so, while the 
+[pdf file](https://bookdown.org/baydap/bookdownplus/bookdownplus.pdf) might give
+you a little surprise.
