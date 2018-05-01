@@ -39,42 +39,44 @@ of the creator of this template.
 
 **How this template works**
 
-There ar different directories in this template.
+There are different directories in this template. We canuse the bash
+command tee to show the output
 
 ``` bash
-tree -d -L 2
+tree -d -L 2 --charset unicode
 #> .
-#> ├── _book
-#> │   ├── figures
-#> │   ├── libs
-#> │   ├── man
-#> │   └── thesis_SfS_files
-#> ├── _bookdown_files
-#> │   └── thesis_SfS_files
-#> ├── bib
-#> ├── figure
-#> ├── figures
-#> ├── images
-#> │   └── auto
-#> ├── pdf
-#> ├── rmd
-#> ├── style
-#> └── tex
+#> |-- _book
+#> |   |-- figures
+#> |   |-- libs
+#> |   |-- man
+#> |   `-- thesis_SfS_files
+#> |-- _bookdown_files
+#> |   `-- thesis_SfS_files
+#> |-- bib
+#> |-- figure
+#> |-- figures
+#> |-- images
+#> |   `-- auto
+#> |-- pdf
+#> |-- rmd
+#> |-- style
+#> `-- tex
 #> 
 #> 16 directories
 ```
 
-  - \_book: Contains the compilied book, e.g. a PDF or html version.
-  - \_bib: Contains bibtex reference data bases.
+  - \_book: Contains the compiled book, e.g. a PDF or html version.
+  - \_bib: Contains BibTeX reference data bases.
   - figure: Contains figures you created from your (R) code in the rmd
     source.
-  - images: Put images you want to include in your thesis in tis folder.
-  - pdf: Put PDFs you want to include in your thesis in tis folder.
+  - images: Put images you want to include in your thesis in this
+    folder.
+  - pdf: Put PDFs you want to include in your thesis in this folder.
   - rmd: The source folder of thesis. When you build a book, the
     following happens: By default, all rmd files in this folder get
     merged into one big rmd file, according to their name. We suggest to
     use one file per chapter. Then, the file containing all the rmd
-    sources will get processed by knitr and later by pandoc.
+    sources will get processed by knitr and later by Pandoc.
   - style: Latex .sty files. Taken from the sfs LaTeX template.
   - tex: All tex data, most importantly, the sfs LaTeX template itself.
     Note that the abstract, preface, epilogue, summary, notation are
@@ -86,10 +88,10 @@ tree -d -L 2
 Furthermore, we want to highlight a few files in the root directory of
 the project:
 
-  - DESCRIPTION: You can use it to delcare dependent packages of your
+  - DESCRIPTION: You can use it to declare dependent packages of your
     thesis in the `Imports:` field. If someone want’s to rebuild you
     thesis from scratch, the can use `remotes::install_deps()` to
-    safisfy all R package dependencies.
+    satisfy all R package dependencies.
   - index.R: Contains a YAML header where a few important variables are
     defined. You can also put markdown below the HEADER.
   - README.(R)md This document.
@@ -100,12 +102,12 @@ This is obviously a very short introduction to the template and it is in
 no way comprehensive. To learn more about bookdown, we encourage the
 reader to have a look at the [bookdown
 guide](https://bookdown.org/yihui/bookdown/) as well as searching
-through stackoverflow / Google for particular questions. In addition,
+through stack overflow / Google for particular questions. In addition,
 inspect the different files in this repo, in particular the ones in the
 rmd directory to develop a deeper understanding of the template.
 
 As of early 2018, this template is still in alpha testing phase, so you
-may experience unexpected behaviour. Please file an issue on the git
+may experience unexpected behavior. Please file an issue on the git
 repository where you have obtained the source of this template in case
 you are stuck for some time with a problem or if you found a solution to
 a problem you believe others are likely to encounter in the future. We
