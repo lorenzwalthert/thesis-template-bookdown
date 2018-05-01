@@ -6,12 +6,21 @@
 This repository is a bookdown template, derived from the LaTeX template
 from the semiar for statistics, ETH Zurich.
 
-**How bookdown works** bookdown in general works as follows:
+**How bookdown works**
+
+bookdown in general works as follows:
 
   - use knitr to convert Rmd to markdown.
   - use pandoc to convert markdown to latex, pdf, word, html books (with
     featuers like font size, background selection, full text search
     etc), epub.
+
+The basic workflow is as follows:
+
+  - Change a source file: In our template, the source of the body of the
+    thesis is under `./rmd/`. For example, change `02-features.Rmd`
+  - Re-compile the book using Cmd + Shift + B (for build) on a Mac and
+    Ctrl + Shift + B on Windows / Linux.
 
 **Why using bookdown**
 
@@ -38,8 +47,10 @@ tree -d -L 2
 #> ├── _book
 #> │   ├── figures
 #> │   ├── libs
-#> │   └── man
+#> │   ├── man
+#> │   └── thesis_SfS_files
 #> ├── _bookdown_files
+#> │   └── thesis_SfS_files
 #> ├── bib
 #> ├── figure
 #> ├── figures
@@ -50,7 +61,7 @@ tree -d -L 2
 #> ├── style
 #> └── tex
 #> 
-#> 14 directories
+#> 16 directories
 ```
 
   - \_book: Contains the compilied book, e.g. a PDF or html version.
@@ -71,6 +82,19 @@ tree -d -L 2
     PDF output to change. This will **not** affect the html output. You
     can create chapters that show up in a particular output and not in
     the other forms as shown in `rmd/99-references.Rmd`.
+
+Furthermore, we want to highlight a few files in the root directory of
+the project:
+
+  - DESCRIPTION: You can use it to delcare dependent packages of your
+    thesis in the `Imports:` field. If someone want’s to rebuild you
+    thesis from scratch, the can use `remotes::install_deps()` to
+    safisfy all R package dependencies.
+  - index.R: Contains a YAML header where a few important variables are
+    defined. You can also put markdown below the HEADER.
+  - README.(R)md This document.
+  - thesis-template-bookdown.Rproj: An RStudio project. We recommend
+    using RStudio for authoring your master thesis with bookdown.
 
 This is obviously a very short introduction to the template and it is in
 no way comprehensive. To learn more about bookdown, we encourage the
