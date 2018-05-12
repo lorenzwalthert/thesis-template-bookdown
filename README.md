@@ -68,10 +68,11 @@ tree -d -L 2 --charset unicode
 #> |   `-- auto
 #> |-- pdf
 #> |-- rmd
+#> |-- scratch
 #> |-- style
 #> `-- tex
 #> 
-#> 16 directories
+#> 17 directories
 ```
 
   - \_book: Contains the compiled book, e.g. a PDF or html version.
@@ -86,6 +87,9 @@ tree -d -L 2 --charset unicode
     merged into one big rmd file, according to their name. We suggest to
     use one file per chapter. Then, the file containing all the rmd
     sources will get processed by knitr and later by Pandoc.
+  - scratch: A random directory which is not tracked by git by default.
+    The idea is that you can put things that are not ready to commit or
+    that have a temporary character here.
   - style: Latex .sty files. Taken from the sfs LaTeX template.
   - tex: All tex data, most importantly, the sfs LaTeX template itself.
     Note that the abstract, preface, epilogue, summary, notation are
