@@ -37,6 +37,14 @@ The basic workflow is as follows:
   which output (html, pdf, etc.) you want to generate. This is remembered for 
   the next build you are doing.s
 
+**Getting started**
+
+Fork the upstream repository and clone the fork. Then, you will have one remote
+repository: origin, which refers to the fork. Add the upstream repo as an 
+upstream remote so you can later rebase on it in case you need. We recommend
+using ssh over https.
+
+
 **Why using bookdown**
 
 The advantages of using bookdown instead of plain LaTeX are, in the eyes of the 
