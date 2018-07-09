@@ -30,7 +30,11 @@ In a nutshell, bookdown works as follows:
 The basic workflow is as follows: 
 
 * Change a source file: In our template, the source of the body of the thesis
-  is under `./rmd/`. For example, change `02-features.Rmd`
+  is under `./rmd/`. For example, change `02-features.Rmd`. To make sure only
+  files from this directory are used, get the devel versio of bookdown  and 
+  add a corresponding confirugartion 
+  (for details, see https://github.com/rstudio/bookdown/issues/242).
+  
 * Re-compile the book using Cmd + Shift + B (for build) on a Mac and Ctrl + 
   Shift + B on Windows / Linux.
 * You can customize the build in the RStudio Build Tab, where you can specify
