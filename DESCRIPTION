@@ -1,15 +1,17 @@
 Package: Thesis
 Title: A master thesis template
+Type: document
 Version: 0.1.0
+Date: 2018-03-07
 Authors@R: c(person("Nicola", "Gnecco", role = c("cre", "aut", "cph"), email = "@mailbox.org"),
   person("Lorenz", "Walthert", role = c("cre", "aut", "cph"), email = "lorenz.walthert@icloud.com"), 
   person("Seminar for Statistics", "ETH Zurich", role = c("cph")))
 Description:
     A master thesis template in bookdown for the seminar for statistics, ETH 
     Zurich.
-Imports:
-    kableExtra,
-    bookdown
+Imports: 
+    bookdown,
+    kableExtra
 Encoding: UTF-8
 LazyData: true
-Date: 2018-03-07
+
