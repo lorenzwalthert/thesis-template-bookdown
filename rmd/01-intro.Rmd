@@ -3,7 +3,14 @@
 The R package `bookdownplus` [@Reference] , [@HamF85], @StaWW91 [p. 15] is an
 extension of `bookdown`. Indeed, you can also just dispay the year from 
 the reference: I.e. Stahel was right [-@StaWW91]. You can find all supported
-citation formats [here](http://pandoc.org/MANUAL.html#citations).
+citation formats [here](http://pandoc.org/MANUAL.html#citations). Here are 
+some: 
+
+* [@StaWW91]
+* [see @StaWW91 p.3]
+* Chollet [-@StaWW91, p.3] says
+* @StaWW91 [p. 3]
+
 
 It is a collection of multiple templates on the basis
 of LaTeX, which are tailored so that I can work happily under the umbrella of
