@@ -26,19 +26,19 @@ In a nutshell, bookdown works as follows:
 * use pandoc to convert markdown to latex, pdf, word, html books (with featuers
   like font size, background selection, full text search etc), epub.
 
-The basic workflow is as follows:
+The basic workflow in RStudio is as follows:
 
+* Open the RStudio project.
 * Change a source file: In our template, the source of the body of the thesis
   is under `./rmd/`. For example, change `02-features.Rmd`. To make sure only
   files from this directory are used, get the devel versio of bookdown  and 
   add a corresponding confirugartion 
   (for details, see https://github.com/rstudio/bookdown/issues/242).
-  
 * Re-compile the book using Cmd + Shift + B (for build) on a Mac and Ctrl + 
   Shift + B on Windows / Linux.
 * You can customize the build in the RStudio Build Tab, where you can specify
   which output (html, pdf, etc.) you want to generate. This is remembered for the
-  next build you are doing.s
+  next build you are doing.
 
 **Getting started**
 
@@ -46,6 +46,9 @@ Fork the upstream repository and clone the fork. Then, you will have one remote
 repository: origin, which refers to the fork. Add the upstream repo as an
 upstream remote so you can later rebase on it in case you need. We recommend
 using ssh over https.
+
+If you are not familar with git, you can also simply download the repo.
+However, we strongly recommend using version control for your thesis.
 
 **Why using bookdown**
 
