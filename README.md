@@ -51,18 +51,21 @@ of the creator of this template:
     supported by Pandoc, e.g. Word and html.
   - The best of two worlds. Use intuitive markdown syntax where
     possible, use the full power of LaTeX syntax where needed. This
-    includes a real-time latex equation previewer in RStudio, bibtex
-    reference, LaTeX cross-, text- and figure reference.
+    includes bibtex reference, LaTeX cross-, text- and figure reference.
   - It’s native R. Integrate R code and R output such as plots, tables,
     figures directly in your writing has never been easier than with
     bookdown. You can turn a data frame into a latex table using the
     power of R packages such as `kableExtra`.
+  - The power of RStudio. Use the same IDE for programming and writing.
+    Leverage the advantages of a real-time latex equation previewer
+    right in your R Markdown, a git GUI, spell checking, file browser
+    and more.
   - You can also use other languages supported by knitr such as python,
     stan etc.\[1\]
   - Because it’s native R, you can place R variables in the floating
     text. Check out the Rmd source of this document to see that we used
     R to compute the square root of three (1.7320508), print todays date
-    with `Sys.Date()` right into the text: 2018-09-23
+    with `Sys.Date()` right into the text: 2018-11-27
 
 **How this template works**
 
@@ -77,7 +80,6 @@ tree -d -L 2 --charset unicode
 #> |   |-- man
 #> |   `-- thesis_SfS_files
 #> |-- _bookdown_files
-#> |   `-- thesis_SfS_files
 #> |-- bib
 #> |-- figure
 #> |-- figures
@@ -89,7 +91,7 @@ tree -d -L 2 --charset unicode
 #> |-- style
 #> `-- tex
 #> 
-#> 17 directories
+#> 16 directories
 ```
 
   - \_book: Contains the compiled book, e.g. a PDF or html version.
