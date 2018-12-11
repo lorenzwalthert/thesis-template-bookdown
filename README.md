@@ -23,11 +23,8 @@ The basic workflow in RStudio is as follows:
     make sure only files from this directory are used, get the devel
     versio of bookdown and add a corresponding confirugartion (for
     details, see <https://github.com/rstudio/bookdown/issues/242>).
-
   - Re-compile the book using Cmd + Shift + B (for build) on a Mac and
-    Ctrl + Shift + B on Windows / Linux or press the *build* button in 
-    the buld tab.
-
+    Ctrl + Shift + B on Windows / Linux.
   - You can customize the build in the RStudio Build Tab, where you can
     specify which output (html, pdf, etc.) you want to generate. This is
     remembered for the next build you are doing.
@@ -48,24 +45,33 @@ The advantages of using bookdown instead of plain LaTeX are, in the eyes
 of the creator of this template:
 
   - Generalization. Not just latex or PDF output, but any output
-    supported by Pandoc, e.g. Word and html.
+    supported by Pandoc, e.g. Word and html, epub. If you at some point
+    decide to work with LaTeX only, just render to LaTeX and continue.
+    You don’t loose anything compared to status quo.
   - The best of two worlds. Use intuitive markdown syntax where
     possible, use the full power of LaTeX syntax where needed. This
     includes bibtex reference, LaTeX cross-, text- and figure reference.
   - It’s native R. Integrate R code and R output such as plots, tables,
     figures directly in your writing has never been easier than with
     bookdown. You can turn a data frame into a latex table using the
-    power of R packages such as `kableExtra`.
+    power of R packages such as `kableExtra`. You can change the data
+    subset, re-compile the whole book and all figures, tables and other
+    data dependent elements will be udpated.
   - The power of RStudio. Use the same IDE for programming and writing.
     Leverage the advantages of a real-time latex equation previewer
     right in your R Markdown, a git GUI, spell checking, file browser
     and more.
   - You can also use other languages supported by knitr such as python,
-    stan etc.\[1\]
+    stan etc. You can even use R code to control the behavior of chunk
+    evaluation. Below, we even used the bash command `tree` to show the
+    directory structure of this repo. Since unicode is not suppored with
+    pdflatex, we used R code to tell knitr to use the tree command with
+    the option `charset unicode` for pdf output and without it for html
+    output. Check the Rmd source of the README to learn more.
   - Because it’s native R, you can place R variables in the floating
     text. Check out the Rmd source of this document to see that we used
     R to compute the square root of three (1.7320508), print todays date
-    with `Sys.Date()` right into the text: 2018-11-27
+    with `Sys.Date()` right into the text: 2018-12-11
 
 **How this template works**
 
@@ -171,8 +177,3 @@ thesis.
 Best,
 
 Nicola Gnecco and Lorenz Walthert
-
-1.  Below, we even used the bash command `tree` to show the directory
-    structure of this repo. Since unicode is not suppored with pdflatex,
-    we used R code to tell knitr to use the tree command with the option
-    `charset unicode` for pdf output and without it for html output.
