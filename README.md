@@ -21,7 +21,7 @@ The basic workflow in RStudio is as follows:
   - Change a source file: In our template, the source of the body of the
     thesis is under `./rmd/`. For example, change `02-features.Rmd`. To
     make sure only files from this directory are used, get the devel
-    versio of bookdown and add a corresponding confirugartion (for
+    versio of bookdown and add a corresponding configuration (for
     details, see <https://github.com/rstudio/bookdown/issues/242>).
   - Re-compile the book using Cmd + Shift + B (for build) on a Mac and
     Ctrl + Shift + B on Windows / Linux.
@@ -31,13 +31,15 @@ The basic workflow in RStudio is as follows:
 
 **Getting started**
 
-Fork the upstream repository and clone the fork. Then, you will have one
-remote repository: origin, which refers to the fork. Add the upstream
-repo as an upstream remote so you can later rebase on it in case you
-need. We recommend using ssh over https.
+For the git cracks: Fork the upstream repository and clone the
+fork.Then, you will have one remote repository: origin, which refers to
+the fork. Add the upstream repo as an upstream remote so you can later
+rebase on it in case you need. We recommend using ssh over https, but if
+that’s too complicated with the RSA key, just use https, it willl do the
+job.
 
-If you are not familar with git, you can also simply download the repo.
-However, we strongly recommend using version control for your thesis.
+For everyone else: You can also simply download the repo. However, we
+strongly recommend using version control for your thesis.
 
 **Why using bookdown**
 
@@ -71,7 +73,7 @@ of the creator of this template:
   - Because it’s native R, you can place R variables in the floating
     text. Check out the Rmd source of this document to see that we used
     R to compute the square root of three (1.7320508), print todays date
-    with `Sys.Date()` right into the text: 2018-12-11
+    with `Sys.Date()` right into the text: 2018-12-19
 
 **How this template works**
 
@@ -166,13 +168,10 @@ inspect the different files in this repo, in particular the ones in the
 rmd directory to develop a deeper understanding of the template.
 
 As of early 2018, this template is still in alpha testing phase, so you
-may experience unexpected behavior. Please file an issue on the git
-repository where you have obtained the source of this template in case
-you are stuck for some time with a problem or if you found a solution to
-a problem you believe others are likely to encounter in the future. Pull
-requests on typos are also welcome. We want to make sure that students
-working this template have a great experience writing their master
-thesis.
+may experience unexpected behavior. As the git repo is not maintained
+directly, get in touch with Lorenz via email
+(<lorenz.walthert@icloud.com>) if you experience problems *after* you
+searched on Google and other platforms for a solution.
 
 Best,
 
