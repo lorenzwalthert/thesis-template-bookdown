@@ -154,9 +154,10 @@ inspect the different files in this repo, in particular the ones in the rmd
 directory to develop a deeper understanding of the template.
 
 As of early 2018, this template is still in alpha testing phase, so you may
-experience unexpected behavior. As the git repo is not maintained directly, get
-in touch with Lorenz via email (lorenz.walthert@icloud.com) if you experience problems 
-*after* you searched on Google and other platforms for a solution.
+experience unexpected behavior. If you experience problems 
+*after* you searched on Google and other platforms for a solution, feel free to 
+open an issue in this repo.
+
 
 Best,
 

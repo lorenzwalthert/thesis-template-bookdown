@@ -73,7 +73,7 @@ of the creator of this template:
   - Because it’s native R, you can place R variables in the floating
     text. Check out the Rmd source of this document to see that we used
     R to compute the square root of three (1.7320508), print todays date
-    with `Sys.Date()` right into the text: 2018-12-19
+    with `Sys.Date()` right into the text: 2019-01-11
 
 **How this template works**
 
@@ -168,10 +168,9 @@ inspect the different files in this repo, in particular the ones in the
 rmd directory to develop a deeper understanding of the template.
 
 As of early 2018, this template is still in alpha testing phase, so you
-may experience unexpected behavior. As the git repo is not maintained
-directly, get in touch with Lorenz via email
-(<lorenz.walthert@icloud.com>) if you experience problems *after* you
-searched on Google and other platforms for a solution.
+may experience unexpected behavior. If you experience problems *after*
+you searched on Google and other platforms for a solution, feel free to
+open an issue in this repo.
 
 Best,
 
