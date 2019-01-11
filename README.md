@@ -4,7 +4,7 @@
 # A few words from the authors
 
 This repository is a bookdown template, derived from the LaTeX template
-from the semiar for statistics, ETH Zurich.
+from the seminar for statistics, ETH Zurich.
 
 **How bookdown works**
 
@@ -12,7 +12,7 @@ In a nutshell, bookdown works as follows:
 
   - use knitr to convert Rmd to markdown.
   - use pandoc to convert markdown to latex, pdf, word, html books (with
-    featuers like font size, background selection, full text search
+    features like font size, background selection, full text search
     etc), epub.
 
 The basic workflow in RStudio is as follows:
@@ -21,7 +21,7 @@ The basic workflow in RStudio is as follows:
   - Change a source file: In our template, the source of the body of the
     thesis is under `./rmd/`. For example, change `02-features.Rmd`. To
     make sure only files from this directory are used, get the devel
-    versio of bookdown and add a corresponding configuration (for
+    version of bookdown and add a corresponding configuration (for
     details, see <https://github.com/rstudio/bookdown/issues/242>).
   - Re-compile the book using Cmd + Shift + B (for build) on a Mac and
     Ctrl + Shift + B on Windows / Linux.
@@ -35,7 +35,7 @@ For the git cracks: Fork the upstream repository and clone the
 fork.Then, you will have one remote repository: origin, which refers to
 the fork. Add the upstream repo as an upstream remote so you can later
 rebase on it in case you need. We recommend using ssh over https, but if
-that’s too complicated with the RSA key, just use https, it willl do the
+that’s too complicated with the RSA key, just use https, it will do the
 job.
 
 For everyone else: You can also simply download the repo. However, we
@@ -58,7 +58,7 @@ of the creator of this template:
     bookdown. You can turn a data frame into a latex table using the
     power of R packages such as `kableExtra`. You can change the data
     subset, re-compile the whole book and all figures, tables and other
-    data dependent elements will be udpated.
+    data dependent elements will be updated.
   - The power of RStudio. Use the same IDE for programming and writing.
     Leverage the advantages of a real-time latex equation previewer
     right in your R Markdown, a git GUI, spell checking, file browser
@@ -66,14 +66,14 @@ of the creator of this template:
   - You can also use other languages supported by knitr such as python,
     stan etc. You can even use R code to control the behavior of chunk
     evaluation. Below, we even used the bash command `tree` to show the
-    directory structure of this repo. Since unicode is not suppored with
-    pdflatex, we used R code to tell knitr to use the tree command with
-    the option `charset unicode` for pdf output and without it for html
-    output. Check the Rmd source of the README to learn more.
+    directory structure of this repo. Since unicode is not supported
+    with pdflatex, we used R code to tell knitr to use the tree command
+    with the option `charset unicode` for pdf output and without it for
+    html output. Check the Rmd source of the README to learn more.
   - Because it’s native R, you can place R variables in the floating
     text. Check out the Rmd source of this document to see that we used
-    R to compute the square root of three (1.7320508), print todays date
-    with `Sys.Date()` right into the text: 2019-01-11
+    R to compute the square root of three (1.7320508), print today’s
+    date with `Sys.Date()` right into the text: 2019-01-11
 
 **How this template works**
 
@@ -142,13 +142,13 @@ the project:
 
   - We strongly suggest to use a different folder for the data / code of
     your thesis and reserve this directory for the thesis document only.
-    You can reaname this directory `analysis-communication` (since this
+    You can rename this directory `analysis-communication` (since this
     will be the means used for communicating the results and process of
     your thesis) and use `analysis-raw` for the code and `data` for all
     data. Ideally, you place them in the same directory so you can still
     work with relative paths, e.g. `../data`.
   - We suggest to use git version control for the thesis and the raw
-    analsyis.
+    analysis.
   - If your thesis is open source, you can use netlify.com to deploy it,
     i.e. for every commit you push to a remote repo like GitHub, you can
     use netlify’s CLI to build your book on a CI machine like travis.
