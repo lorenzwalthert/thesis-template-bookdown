@@ -3,8 +3,9 @@
 
 # A few words from the authors
 
-This repository is a bookdown template, derived from the LaTeX template
-from the seminar for statistics, ETH Zurich.
+This repository is a [bookdown](https://github.com/rstudio/bookdown)
+template, derived from the LaTeX template from the seminar for
+statistics, ETH Zurich.
 
 **How bookdown works**
 
@@ -20,9 +21,9 @@ The basic workflow in RStudio is as follows:
   - Open the RStudio project.
   - Change a source file: In our template, the source of the body of the
     thesis is under `./rmd/`. For example, change `02-features.Rmd`. To
-    make sure only files from this directory are used, get the devel
-    version of bookdown and add a corresponding configuration (for
-    details, see <https://github.com/rstudio/bookdown/issues/242>).
+    make sure only files from this directory are used, we set the option
+    `rmd_subdir: ["rmd/"]` in `bookdown.yml`. For this to work you need
+    bookdown version 0.9 or greater.
   - Re-compile the book using Cmd + Shift + B (for build) on a Mac and
     Ctrl + Shift + B on Windows / Linux.
   - You can customize the build in the RStudio Build Tab, where you can
@@ -73,7 +74,7 @@ of the creator of this template:
   - Because it’s native R, you can place R variables in the floating
     text. Check out the Rmd source of this document to see that we used
     R to compute the square root of three (1.7320508), print today’s
-    date with `Sys.Date()` right into the text: 2019-01-11
+    date with `Sys.Date()` right into the text: 2019-05-06
 
 **How this template works**
 
