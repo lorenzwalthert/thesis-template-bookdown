@@ -42,6 +42,10 @@ job.
 For everyone else: You can also simply download the repo. However, we
 strongly recommend using version control for your thesis.
 
+Make sure to
+[watch](https://help.github.com/en/articles/watching-and-unwatching-repositories)
+this GitHub repo for issues that might affect you.
+
 **Why using bookdown**
 
 The advantages of using bookdown instead of plain LaTeX are, in the eyes
