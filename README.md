@@ -78,7 +78,7 @@ of the creator of this template:
   - Because it’s native R, you can place R variables in the floating
     text. Check out the Rmd source of this document to see that we used
     R to compute the square root of three (1.7320508), print today’s
-    date with `Sys.Date()` right into the text: 2019-05-06
+    date with `Sys.Date()` right into the text: 2019-07-25
 
 **How this template works**
 
@@ -161,6 +161,10 @@ the project:
     R](https://github.com/hadley/adv-r/tree/88dcb07e2b2ae634af6cdeafff2f3ea976077064)
     for an example. That makes tracking the `_book` folder in git
     redundant.
+  - To keep lines 80 characters long, you can use the stylermd Rstudio
+    Addin. Assign a keyboard shortcut to it and it will format your text
+    nicely. See <https://github.com/lorenzwalthert/stylermd> for
+    details.
 
 **Further material**
 
