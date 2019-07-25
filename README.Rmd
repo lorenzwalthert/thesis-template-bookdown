@@ -61,7 +61,9 @@ creator of this template:
 * Generalization. Not just latex or PDF output, but any output supported by
   Pandoc, e.g. Word and html, epub. If you at some point decide to work with 
   LaTeX only, just render to LaTeX and continue. You don't loose anything 
-  compared to status quo.
+  compared to status quo. When you host your source code on GitHub, you can 
+  easily publish a html book that is updated with every push. How? Checkout 
+  https://github.com/ropenscilabs/tic.bookdown.
 * The best of two worlds. Use intuitive markdown syntax where possible, use the
   full power of LaTeX syntax where needed. This includes bibtex reference, LaTeX 
   cross-, text- and figure reference.
