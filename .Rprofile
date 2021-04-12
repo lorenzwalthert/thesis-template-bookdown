@@ -1,3 +1,4 @@
+source("renv/activate.R")
 # .Rprofile generated from teamtools::init_team_repo(). Do not edit by hand
 # if ("teamtools" %in% utils::installed.packages()[, "Package"]) {
 #   cli::cat_bullet("Sourcing .Rprofile from team root.",
