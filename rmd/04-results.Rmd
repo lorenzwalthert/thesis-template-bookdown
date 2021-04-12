@@ -10,7 +10,7 @@ plot(cars)
 Tab. \@ref(tab:tab1) psum dolor sit amet, consectetur adipiscing elit, sed do 
 eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-```{r tab1, tidy=FALSE, echo=FALSE, message = FALSE}
+```{r tab1}
 require(knitr)
 require(kableExtra)
 kable(
