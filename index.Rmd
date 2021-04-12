@@ -11,6 +11,7 @@ output:
   bookdown::pdf_book:
     template: tex/MasterThesisSfS.tex
     keep_tex: yes
+    pandoc_args: --top-level-division=chapter
     citation_package: natbib
     latex_engine: pdflatex
     toc_depth: 3
