@@ -91,11 +91,11 @@ creator of this template:
 
 There are different directories in this template:
 
-```{bash, include = knitr::is_html_output()}
+```{bash, include = knitr::is_html_output(), eval = FALSE}
 tree -d -L 2
 ```
 
-```{bash, include = !knitr::is_html_output()}
+```{bash, include = !knitr::is_html_output(), eval = FALSE}
 tree -d -L 2 --charset unicode
 ```
 
@@ -140,6 +140,9 @@ project:
   communicating the results and process of your thesis) and use `analysis-raw` for
   the code and `data` for all data. Ideally, you place them in the same directory
   so you can still work with relative paths, e.g. `../data`.
+* We suggest to use the package manager [{renv}](https://rstudio.github.io/renv/) 
+  for better reproducibility and isolation for the packages in this project from 
+  the global library.
 * We suggest to use git version control for the thesis and the raw analysis.
 * If your thesis is open source, you can use netlify.com to deploy it, i.e. for
   every commit you push to a remote repo like GitHub, you can use netlify's CLI to
@@ -150,6 +153,10 @@ project:
 * To keep lines 80 characters long, you can use the stylermd Rstudio Addin. 
   Assign a keyboard shortcut to it and it will format your text nicely.
   See https://github.com/lorenzwalthert/stylermd for details. 
+* You might want to use [{targets}](https://docs.ropensci.org/targets/), a MAKE 
+  like pipelining tool to keep your analysis reproducible and only re-execute 
+  the outdated parts.
+
 
 **Further material**
 
