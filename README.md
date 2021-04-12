@@ -139,7 +139,8 @@ the project:
 -   We suggest to use the package manager
     [{renv}](https://rstudio.github.io/renv/) for better reproducibility
     and isolation for the packages in this project from the global
-    library.
+    library. It’s already initialised with this template. All packages
+    you install and update are contained in a separate library.
 -   We suggest to use git version control for the thesis and the raw
     analysis.
 -   If your thesis is open source, you can use netlify.com to deploy it,
